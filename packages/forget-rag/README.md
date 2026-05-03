@@ -49,10 +49,10 @@ this library with a typer-based CLI for ad-hoc memory hygiene.
 
 ## Links
 
-- Repo: https://github.com/LBDog/forget-rag
-- Benchmark write-up: https://github.com/LBDog/forget-rag/blob/main/docs/benchmark.md
-- Architecture: https://github.com/LBDog/forget-rag/blob/main/docs/architecture.md
-- Issues: https://github.com/LBDog/forget-rag/issues
+- Repo: https://github.com/zx22413/forget-rag
+- Benchmark write-up: https://github.com/zx22413/forget-rag/blob/main/docs/benchmark.md
+- Architecture: https://github.com/zx22413/forget-rag/blob/main/docs/architecture.md
+- Issues: https://github.com/zx22413/forget-rag/issues
 
 ## License
 

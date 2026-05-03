@@ -5,7 +5,7 @@ name: publish
 # registered on PyPI pointing at this workflow file.
 #
 # Setup once on PyPI (https://pypi.org/manage/account/publishing/):
-#   - Project: forget-rag    | owner: LBDog | repo: forget-rag
+#   - Project: forget-rag    | owner: zx22413 | repo: forget-rag
 #     workflow: publish.yml  | environment: pypi
 #   - Project: mem-broom     | (same as above)
 #

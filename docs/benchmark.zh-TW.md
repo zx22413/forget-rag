@@ -76,7 +76,7 @@ bm25_heat_m                100000   100    19.94    28.42     20.55  0.00%  0.00
 ## 重現方式
 
 ```bash
-git clone https://github.com/LBDog/forget-rag.git
+git clone https://github.com/zx22413/forget-rag.git
 cd forget-rag
 uv sync
 uv run python scripts/run_benchmark.py

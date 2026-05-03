@@ -84,7 +84,7 @@ Raw results: [`docs/benchmark_data/results.json`](benchmark_data/results.json).
 ## Reproduce
 
 ```bash
-git clone https://github.com/LBDog/forget-rag.git
+git clone https://github.com/zx22413/forget-rag.git
 cd forget-rag
 uv sync
 uv run python scripts/run_benchmark.py

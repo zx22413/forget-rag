@@ -37,11 +37,11 @@ dependencies = [
 mem-broom = "mem_broom.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/LBDog/forget-rag"
-Repository = "https://github.com/LBDog/forget-rag"
-Documentation = "https://github.com/LBDog/forget-rag/blob/main/packages/mem-broom/README.md"
-Changelog = "https://github.com/LBDog/forget-rag/blob/main/CHANGELOG.md"
-Issues = "https://github.com/LBDog/forget-rag/issues"
+Homepage = "https://github.com/zx22413/forget-rag"
+Repository = "https://github.com/zx22413/forget-rag"
+Documentation = "https://github.com/zx22413/forget-rag/blob/main/packages/mem-broom/README.md"
+Changelog = "https://github.com/zx22413/forget-rag/blob/main/CHANGELOG.md"
+Issues = "https://github.com/zx22413/forget-rag/issues"
 
 [build-system]
 requires = ["hatchling"]

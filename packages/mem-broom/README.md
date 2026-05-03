@@ -1,6 +1,6 @@
 # mem-broom
 
-CLI broom for [forget-rag](https://github.com/LBDog/forget-rag) — sweep
+CLI broom for [forget-rag](https://github.com/zx22413/forget-rag) — sweep
 stale chunks out of your RAG memory from the command line.
 
 > **Status:** Week 3 complete. All six subcommands ship with tests and a
