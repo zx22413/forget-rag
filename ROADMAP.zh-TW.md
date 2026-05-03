@@ -162,12 +162,12 @@ Week 3 末確認的決策：
 - 向量層維持推遲到 v0.2
 
 ### 一 — PyPI metadata 前置
-- [ ] `forget-rag` `pyproject.toml` 補 metadata：description、license、classifiers、keywords、urls
-- [ ] `mem-broom` `pyproject.toml` 同步
-- [ ] 確認兩個名字在 PyPI 還沒被佔
-- [ ] `uv build` 兩包都試包（wheel + sdist）
-- [ ] 設好 PyPI trusted publisher（透過 GitHub Actions OIDC）
-- [ ] commit：`chore: pypi metadata + build setup`
+- [x] `forget-rag` `pyproject.toml` 補 metadata：description、license、classifiers、keywords、urls
+- [x] `mem-broom` `pyproject.toml` 同步
+- [x] 確認兩個名字在 PyPI 還沒被佔
+- [x] `uv build` 兩包都試包（wheel + sdist）
+- [x] 設好 PyPI trusted publisher（透過 GitHub Actions OIDC）
+- [x] commit：`chore: pypi metadata + build setup`
 
 ### 二 — Write-up 上半（英文）
 - [ ] 草 `docs/blog/launch.md`：problem → 現有 RAG 為什麼壞 → 三個 primitive → benchmark 數字 → 給誰用 / 不給誰用

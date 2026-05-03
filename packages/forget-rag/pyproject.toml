@@ -1,18 +1,32 @@
 [project]
 name = "forget-rag"
 version = "0.1.0"
-description = "A forgetting layer for RAG systems."
-readme = "../../README.md"
+description = "A forgetting layer for RAG systems — heat-based decay, tiered storage, graceful eviction."
+readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "LBDog" }]
 requires-python = ">=3.11"
-keywords = ["rag", "llm", "memory", "forgetting", "knowledge-management"]
+keywords = [
+    "rag",
+    "llm",
+    "memory",
+    "forgetting",
+    "knowledge-management",
+    "vector-search",
+    "retrieval",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = []
 
@@ -21,6 +35,9 @@ langchain = ["langchain-core>=0.3"]
 
 [project.urls]
 Homepage = "https://github.com/LBDog/forget-rag"
+Repository = "https://github.com/LBDog/forget-rag"
+Documentation = "https://github.com/LBDog/forget-rag/blob/main/README.md"
+Changelog = "https://github.com/LBDog/forget-rag/blob/main/CHANGELOG.md"
 Issues = "https://github.com/LBDog/forget-rag/issues"
 
 [build-system]

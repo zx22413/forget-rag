@@ -162,12 +162,12 @@ Decisions confirmed end of Week 3:
 - Vector layer still deferred to v0.2
 
 ### Mon — PyPI metadata + build prep
-- [ ] Fill in `forget-rag` `pyproject.toml` metadata: description, license, classifiers, keywords, urls
-- [ ] Same for `mem-broom` `pyproject.toml`
-- [ ] Verify both names are still free on PyPI
-- [ ] `uv build` smoke for both packages (wheel + sdist)
-- [ ] Set up PyPI trusted publisher via GitHub Actions OIDC
-- [ ] Commit: `chore: pypi metadata + build setup`
+- [x] Fill in `forget-rag` `pyproject.toml` metadata: description, license, classifiers, keywords, urls
+- [x] Same for `mem-broom` `pyproject.toml`
+- [x] Verify both names are still free on PyPI
+- [x] `uv build` smoke for both packages (wheel + sdist)
+- [x] Set up PyPI trusted publisher via GitHub Actions OIDC
+- [x] Commit: `chore: pypi metadata + build setup`
 
 ### Tue — Write-up part 1 (English)
 - [ ] Draft `docs/blog/launch.md`: problem → why existing RAG breaks → three primitives → benchmark numbers → who is / isn't this for
