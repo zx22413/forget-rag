@@ -149,9 +149,9 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `docs: mem-broom cli walkthrough + readme`
 
 ### Sun — Buffer / push
-- [ ] Smoke from clean clone: `uv sync && pytest && mem-broom --help`
+- [x] Smoke from clean clone: `uv sync && pytest && mem-broom --help`
 - [ ] Push everything
-- [ ] Commit: `chore: week 3 close`
+- [x] Commit: `chore: week 3 close`
 
 ## Week 4: Launch + write-up
 *(detailed plan written end of Week 3)*

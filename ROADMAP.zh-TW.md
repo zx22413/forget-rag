@@ -149,9 +149,9 @@ Week 2 末確認的決策：
 - [x] commit：`docs: mem-broom cli walkthrough + readme`
 
 ### 日 — Buffer / push
-- [ ] 從乾淨 clone 跑 smoke：`uv sync && pytest && mem-broom --help`
+- [x] 從乾淨 clone 跑 smoke：`uv sync && pytest && mem-broom --help`
 - [ ] 全部 push
-- [ ] commit：`chore: week 3 close`
+- [x] commit：`chore: week 3 close`
 
 ## Week 4：Launch + write-up
 *(Week 3 結束時詳細規劃)*
