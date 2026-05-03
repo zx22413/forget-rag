@@ -37,16 +37,16 @@
 - [ ] commit：`feat: hybrid search with vector`
 
 ### 六 — 範例 + 自用
-- [ ] `examples/01_basic_usage.py` — 30 秒能跑完
-- [ ] 在假資料上跑（Wikipedia 100 篇）
-- [ ] 截圖 CLI 輸出供 README 用
-- [ ] commit：`docs: examples`
+- [x] `examples/01_basic_usage.py` — 30 秒能跑完
+- [x] 在假資料上跑（用 back-date 時間戳呈現衰減）
+- [x] CLI 輸出存檔供 README 用（`examples/01_basic_usage.out.txt`）
+- [x] commit：`docs: examples`
 
 ### 日 — 公開版 README
 - [x] README v0（bootstrap 階段已完成）
-- [ ] 加架構圖（Excalidraw 匯出 PNG）
+- [x] 加架構圖（`docs/architecture.md` 用 mermaid，GitHub 直接 render）
 - [ ] 全部 push；**還不要 launch**（Week 2 才發）
-- [ ] commit：`docs: v0 README + diagram`
+- [x] commit：`docs: v0 README + diagram`（已在初始 scaffold 包含）
 
 ## Week 2：LangChain adapter + benchmark
 *(Week 1 結束時詳細規劃)*

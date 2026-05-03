@@ -37,16 +37,16 @@
 - [ ] Commit: `feat: hybrid search with vector`
 
 ### Sat — Examples + dogfood
-- [ ] `examples/01_basic_usage.py` — runnable in 30 seconds
-- [ ] Run it on a fake corpus (Wikipedia 100 articles)
-- [ ] Take screenshots of CLI output for README
-- [ ] Commit: `docs: examples`
+- [x] `examples/01_basic_usage.py` — runnable in 30 seconds
+- [x] Run it on a fake corpus (back-dated chunks demonstrate decay)
+- [x] Capture CLI output for README (`examples/01_basic_usage.out.txt`)
+- [x] Commit: `docs: examples`
 
 ### Sun — Public-ready README
 - [x] README v0 (already done as part of bootstrap)
-- [ ] Add architecture diagram (Excalidraw, export PNG)
+- [x] Add architecture diagram (mermaid in `docs/architecture.md` — renders inline on GitHub)
 - [ ] Push everything; **don't launch yet** (Week 2 target)
-- [ ] Commit: `docs: v0 README + diagram`
+- [x] Commit: `docs: v0 README + diagram` (covered by initial scaffold)
 
 ## Week 2: LangChain adapter + benchmark
 *(detailed plan written end of Week 1)*

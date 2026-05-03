@@ -1,0 +1,23 @@
+Seeded 7 chunks.
+
+=== Search: 'mcp' ===
+  [L1] heat=0.891  How to set up Claude Code MCP server.
+
+=== Maintenance ===
+  L1: 2
+  L2: 3
+  L3: 2
+
+=== Health report ===
+  Total alive: 7
+  Suggested forgets: 3
+    - 'Ancient PDF I never opened.'
+        reason: heat 0.0000 below floor 0.05
+    - 'Old meeting notes from 2024 retro.'
+        reason: heat 0.0001 below floor 0.05
+    - 'OKR template Q4 2025 — deprecated.'
+        reason: heat 0.0098 below floor 0.05
+  Stale chunks (>90 days idle): 3
+
+  Forgot 3 chunks. (soft delete; rows still exist in DB until purged)
+  Alive after forget: 4
