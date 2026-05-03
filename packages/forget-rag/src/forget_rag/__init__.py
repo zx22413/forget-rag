@@ -10,7 +10,20 @@ in each release.
 from __future__ import annotations
 
 from forget_rag.memory import Chunk, ForgettingMemory
+from forget_rag.tiers import (
+    ForgetSuggestion,
+    HealthReport,
+    StaleChunk,
+    TierAssignment,
+)
 
-__version__ = "0.1.0a1"
+__version__ = "0.1.0a2"
 
-__all__ = ["ForgettingMemory", "Chunk"]
+__all__ = [
+    "Chunk",
+    "ForgetSuggestion",
+    "ForgettingMemory",
+    "HealthReport",
+    "StaleChunk",
+    "TierAssignment",
+]

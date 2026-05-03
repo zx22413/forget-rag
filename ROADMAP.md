@@ -25,10 +25,10 @@
 - [x] Commit: `feat: add/search/forget primitives`
 
 ### Thu — Tier transitions
-- [ ] `tiers.py`: L1→L2→L3 logic with thresholds
-- [ ] `health_check()` returns suggestions
-- [ ] Tests with fast-forwarded clock
-- [ ] Commit: `feat: tiered storage`
+- [x] `tiers.py`: L1→L2→L3 logic with thresholds
+- [x] `health_check()` returns suggestions
+- [x] Tests with fast-forwarded clock
+- [x] Commit: `feat: tiered storage`
 
 ### Fri — Vector layer (optional)
 - [ ] Add bge-m3 embedding via `sentence-transformers` or `ollama`

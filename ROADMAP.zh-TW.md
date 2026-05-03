@@ -25,10 +25,10 @@
 - [x] commit：`feat: add/search/forget primitives`
 
 ### 四 — 分層轉移
-- [ ] `tiers.py`：L1→L2→L3 邏輯與閾值
-- [ ] `health_check()` 回建議
-- [ ] 用 fast-forward 時鐘做測試
-- [ ] commit：`feat: tiered storage`
+- [x] `tiers.py`：L1→L2→L3 邏輯與閾值
+- [x] `health_check()` 回建議
+- [x] 用 fast-forward 時鐘做測試
+- [x] commit：`feat: tiered storage`
 
 ### 五 — 向量層（選做）
 - [ ] 用 `sentence-transformers` 或 `ollama` 加 bge-m3

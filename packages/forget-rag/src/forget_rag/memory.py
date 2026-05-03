@@ -14,6 +14,11 @@ from typing import Literal
 
 from forget_rag.backends.sqlite import SqliteBackend
 from forget_rag.heat import HeatInputs, compute_heat
+from forget_rag.tiers import (
+    HealthReport,
+    build_health_report,
+    compute_tier_assignments,
+)
 
 # --- defaults -------------------------------------------------------------
 
@@ -175,3 +180,52 @@ class ForgettingMemory:
     def count(self) -> int:
         """Number of alive (non-forgotten) chunks in this namespace."""
         return self._backend.count_alive()
+
+    # --- maintenance & reporting -----------------------------------------
+
+    def maintenance(self, *, now: datetime | None = None) -> dict[str, int]:
+        """Recompute heat for every alive chunk and shuffle tiers.
+
+        Returns the new tier distribution. Idempotent — safe to call
+        on a cron, after bulk inserts, or never (search still works,
+        tiers just stay stale).
+        """
+        now = now or datetime.now(UTC)
+        rows = list(self._backend.iter_alive())
+        assignments = compute_tier_assignments(
+            rows,
+            tier_capacities=self._tiers,
+            halflife_days=self._halflife_days,
+            now=now,
+        )
+        for a in assignments:
+            self._backend.set_tier(a.chunk_id, a.tier)
+
+        distribution: dict[str, int] = dict.fromkeys(self._tiers, 0)
+        for a in assignments:
+            distribution[a.tier] = distribution.get(a.tier, 0) + 1
+        return distribution
+
+    def health_check(
+        self,
+        *,
+        now: datetime | None = None,
+        stale_after_days: float = 90.0,
+        forget_heat_floor: float = 0.05,
+    ) -> HealthReport:
+        """Return a snapshot of memory health.
+
+        Non-destructive — surfaces *suggestions* only. Acting on them
+        (calling forget()) is always the user's decision per design
+        principle #3.
+        """
+        now = now or datetime.now(UTC)
+        rows = list(self._backend.iter_alive())
+        return build_health_report(
+            rows,
+            tier_capacities=self._tiers,
+            halflife_days=self._halflife_days,
+            now=now,
+            stale_after_days=stale_after_days,
+            forget_heat_floor=forget_heat_floor,
+        )

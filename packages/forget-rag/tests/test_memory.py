@@ -207,3 +207,64 @@ def test_full_round_trip(mem: ForgettingMemory) -> None:
 
     assert mem.search("only") == []
     assert mem.count() == 0
+
+
+# --- maintenance & health_check ------------------------------------------
+
+
+def test_maintenance_assigns_tiers_by_heat() -> None:
+    """Recent chunks land in L1, older ones get demoted."""
+    mem = ForgettingMemory(
+        sqlite_path=":memory:",
+        decay_halflife_days=30.0,
+        tiers={"L1": 1, "L2": 1, "L3": "unlimited"},
+    )
+    try:
+        # Insert with manual timestamps via the backend so we can fake age.
+        from datetime import timedelta as td
+
+        hot_id = mem._backend.insert("hot", now=NOW)
+        warm_id = mem._backend.insert("warm", now=NOW - td(days=30))
+        cold_id = mem._backend.insert("cold", now=NOW - td(days=365))
+
+        dist = mem.maintenance(now=NOW)
+        assert dist == {"L1": 1, "L2": 1, "L3": 1}
+
+        assert mem._backend.get(hot_id).tier == "L1"
+        assert mem._backend.get(warm_id).tier == "L2"
+        assert mem._backend.get(cold_id).tier == "L3"
+    finally:
+        mem.close()
+
+
+def test_maintenance_is_idempotent(mem: ForgettingMemory) -> None:
+    mem.add("a")
+    mem.add("b")
+    first = mem.maintenance(now=NOW)
+    second = mem.maintenance(now=NOW)
+    assert first == second
+
+
+def test_health_check_returns_report_with_distribution(mem: ForgettingMemory) -> None:
+    for i in range(3):
+        mem.add(f"chunk {i}")
+    report = mem.health_check(now=NOW)
+    assert report.total == 3
+    assert sum(report.tier_distribution.values()) == 3
+
+
+def test_health_check_suggests_forgets_for_very_cold_chunks() -> None:
+    """Chunks aged many half-lives drop below the heat floor."""
+    from datetime import timedelta as td
+
+    mem = ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=30.0)
+    try:
+        # 12 half-lives: heat ≈ 1 / 4096 ≈ 0.00024, way below default 0.05.
+        old_id = mem._backend.insert("ancient history", now=NOW - td(days=365))
+        mem._backend.insert("fresh news", now=NOW)
+
+        report = mem.health_check(now=NOW)
+        suggested_ids = [s.id for s in report.suggested_forgets]
+        assert old_id in suggested_ids
+    finally:
+        mem.close()
