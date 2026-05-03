@@ -77,11 +77,11 @@ Decisions locked end of Week 1:
 - [x] Commit: `feat(bench): synthetic corpus + metric collector`
 
 ### Thu — Run experiments
-- [ ] Three configs: A=pure BM25, B=BM25+heat, C=B+maintenance
-- [ ] Three corpus sizes: 1k / 10k / 100k chunks
-- [ ] Save raw JSON to `docs/benchmark_data/results.json`
-- [ ] Generate ASCII tables for embedding in markdown
-- [ ] Commit: `feat(bench): heat vs no-heat experiments`
+- [x] Three configs: A=pure BM25, B=BM25+heat, C=B+maintenance
+- [x] Three corpus sizes: 1k / 10k / 100k chunks
+- [x] Save raw JSON to `docs/benchmark_data/results.json`
+- [x] Generate ASCII tables for embedding in markdown
+- [x] Commit: `feat(bench): heat vs no-heat experiments`
 
 ### Fri — Write up
 - [ ] `docs/benchmark.md` — method, results, analysis, "what this proves / doesn't prove"

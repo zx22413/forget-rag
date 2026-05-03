@@ -77,11 +77,11 @@ Week 1 末確認的決策：
 - [x] commit：`feat(bench): synthetic corpus + metric collector`
 
 ### 四 — 跑實驗
-- [ ] 三組設定：A=純 BM25、B=BM25+heat、C=B+maintenance
-- [ ] 三種 corpus size：1k / 10k / 100k chunks
-- [ ] 原始 JSON 存到 `docs/benchmark_data/results.json`
-- [ ] 產 ASCII 表格供 markdown 嵌入
-- [ ] commit：`feat(bench): heat vs no-heat experiments`
+- [x] 三組設定：A=純 BM25、B=BM25+heat、C=B+maintenance
+- [x] 三種 corpus size：1k / 10k / 100k chunks
+- [x] 原始 JSON 存到 `docs/benchmark_data/results.json`
+- [x] 產 ASCII 表格供 markdown 嵌入
+- [x] commit：`feat(bench): heat vs no-heat experiments`
 
 ### 五 — Write up
 - [ ] `docs/benchmark.md`：方法、結果、分析、「證明了什麼 / 沒證明什麼」
