@@ -152,7 +152,14 @@ class SqliteBackend:
         self.namespace = namespace
         # Autocommit mode (isolation_level=None) — each statement commits
         # immediately, which is what we want for a write-light workload.
-        self._conn = sqlite3.connect(self.path, isolation_level=None)
+        # check_same_thread=False so the LangChain adapter can call this
+        # backend from BaseRetriever's async executor (different thread).
+        # Safe because SQLite itself is thread-safe in its default build
+        # and we never issue concurrent statements on this connection —
+        # the async path awaits each call serially.
+        self._conn = sqlite3.connect(
+            self.path, isolation_level=None, check_same_thread=False
+        )
         self._conn.row_factory = sqlite3.Row
         self._conn.executescript(SCHEMA)
 

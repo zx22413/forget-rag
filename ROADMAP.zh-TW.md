@@ -63,11 +63,11 @@ Week 1 末確認的決策：
 - [x] commit：`feat(adapter): langchain scaffolding`
 
 ### 二 — ForgettingRetriever
-- [ ] `ForgettingRetriever` 繼承 `BaseRetriever`
-- [ ] `_get_relevant_documents(query)` → `list[Document]`，metadata 含 id/heat/tier/score/tags
-- [ ] async `_aget_relevant_documents`（v0.1 用 executor 跑同步版）
-- [ ] dev group 裝 langchain-core 跑測試
-- [ ] commit：`feat(adapter): forgetting retriever sync + async`
+- [x] `ForgettingRetriever` 繼承 `BaseRetriever`
+- [x] `_get_relevant_documents(query)` → `list[Document]`，metadata 含 id/heat/tier/score/tags
+- [x] async `_aget_relevant_documents`（v0.1 用 executor 跑同步版）
+- [x] dev group 裝 langchain-core 跑測試
+- [x] commit：`feat(adapter): forgetting retriever sync + async`
 
 ### 三 — Benchmark harness
 - [ ] `benchmark.py`：`make_corpus(n, age_distribution, seed)` 合成生成器

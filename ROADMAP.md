@@ -63,11 +63,11 @@ Decisions locked end of Week 1:
 - [x] Commit: `feat(adapter): langchain scaffolding`
 
 ### Tue — ForgettingRetriever
-- [ ] `ForgettingRetriever` extends `BaseRetriever`
-- [ ] `_get_relevant_documents(query)` → `list[Document]` with metadata (id, heat, tier, score, tags)
-- [ ] async `_aget_relevant_documents` (run sync in executor for v0.1)
-- [ ] Tests with langchain-core installed in dev group
-- [ ] Commit: `feat(adapter): forgetting retriever sync + async`
+- [x] `ForgettingRetriever` extends `BaseRetriever`
+- [x] `_get_relevant_documents(query)` → `list[Document]` with metadata (id, heat, tier, score, tags)
+- [x] async `_aget_relevant_documents` (run sync in executor for v0.1)
+- [x] Tests with langchain-core installed in dev group
+- [x] Commit: `feat(adapter): forgetting retriever sync + async`
 
 ### Wed — Benchmark harness
 - [ ] `benchmark.py`: `make_corpus(n, age_distribution, seed)` — synthetic generator
