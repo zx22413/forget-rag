@@ -45,7 +45,7 @@
 ### Sun — Public-ready README
 - [x] README v0 (already done as part of bootstrap)
 - [x] Add architecture diagram (mermaid in `docs/architecture.md` — renders inline on GitHub)
-- [ ] Push everything; **don't launch yet** (Week 2 target)
+- [x] Push everything; **don't launch yet** (Week 2 target)
 - [x] Commit: `docs: v0 README + diagram` (covered by initial scaffold)
 
 ## Week 2: LangChain adapter + benchmark
@@ -154,7 +154,61 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `chore: week 3 close`
 
 ## Week 4: Launch + write-up
-*(detailed plan written end of Week 3)*
+
+Decisions confirmed end of Week 3:
+- **PyPI**: publish (claim `forget-rag` + `mem-broom` names, ship v0.1.0 wheels)
+- **Launch channel**: Medium article (soft launch — no HN / Reddit for v0.1)
+- **Demo material**: asciinema cast + 3–4 static screenshots
+- Vector layer still deferred to v0.2
+
+### Mon — PyPI metadata + build prep
+- [ ] Fill in `forget-rag` `pyproject.toml` metadata: description, license, classifiers, keywords, urls
+- [ ] Same for `mem-broom` `pyproject.toml`
+- [ ] Verify both names are still free on PyPI
+- [ ] `uv build` smoke for both packages (wheel + sdist)
+- [ ] Set up PyPI trusted publisher via GitHub Actions OIDC
+- [ ] Commit: `chore: pypi metadata + build setup`
+
+### Tue — Write-up part 1 (English)
+- [ ] Draft `docs/blog/launch.md`: problem → why existing RAG breaks → three primitives → benchmark numbers → who is / isn't this for
+- [ ] Reference `docs/benchmark.md` figures, don't duplicate
+- [ ] 1500–2500 words, medium depth
+- [ ] Commit: `docs(blog): launch write-up draft (en)`
+
+### Wed — Write-up part 2 + demo
+- [ ] `docs/blog/launch.zh-TW.md` mirror
+- [ ] Record asciinema cast: `mem-broom` walkthrough (add → search → health → maintain → forget), ~60s
+- [ ] 4 static screenshots: CLI stats, CLI health, benchmark table, architecture diagram
+- [ ] Drop assets into `docs/media/`
+- [ ] Commit: `docs(blog): zh mirror + demo assets`
+
+### Thu — Community files
+- [ ] `CONTRIBUTING.md`: dev setup, running tests, PR conventions
+- [ ] `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1
+- [ ] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
+- [ ] `.github/PULL_REQUEST_TEMPLATE.md`
+- [ ] `SECURITY.md`: how to report, supported versions
+- [ ] Commit: `docs: community files (contributing, coc, templates)`
+
+### Fri — Release v0.1.0
+- [ ] `CHANGELOG.md`: every change from scaffold → v0.1.0
+- [ ] `git tag v0.1.0` + GitHub Release notes (pulled from CHANGELOG)
+- [ ] PyPI publish via GitHub Actions: `forget-rag==0.1.0`, `mem-broom==0.1.0`
+- [ ] Clean-env smoke: `pip install forget-rag mem-broom` then run `examples/01_basic_usage.py`
+- [ ] Commit: `chore: release v0.1.0` (and push tag)
+
+### Sat — Launch
+- [ ] Publish Medium article (English first)
+- [ ] Article footer links: repo, benchmark, examples
+- [ ] Watch: GitHub stars, issues, Medium claps / responses
+- [ ] Triage and patch any P0 bugs immediately
+- [ ] Hotfix commit if needed
+
+### Sun — Retro + v0.2 roadmap
+- [ ] `docs/retro/v0.1.md`: 4-week recap, what worked / didn't, scope cuts revisited
+- [ ] Sketch Week 5+: vector layer (bge-m3 + RRF), `restore` subcommand, user-feedback items
+- [ ] Append Week 5+ to ROADMAP (both langs)
+- [ ] Commit: `docs: v0.1 retro + v0.2 roadmap`
 
 ---
 

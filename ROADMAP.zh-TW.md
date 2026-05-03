@@ -45,7 +45,7 @@
 ### 日 — 公開版 README
 - [x] README v0（bootstrap 階段已完成）
 - [x] 加架構圖（`docs/architecture.md` 用 mermaid，GitHub 直接 render）
-- [ ] 全部 push；**還不要 launch**（Week 2 才發）
+- [x] 全部 push；**還不要 launch**（Week 2 才發）
 - [x] commit：`docs: v0 README + diagram`（已在初始 scaffold 包含）
 
 ## Week 2：LangChain adapter + benchmark
@@ -154,7 +154,61 @@ Week 2 末確認的決策：
 - [x] commit：`chore: week 3 close`
 
 ## Week 4：Launch + write-up
-*(Week 3 結束時詳細規劃)*
+
+Week 3 末確認的決策：
+- **PyPI**：上（佔 `forget-rag` + `mem-broom` 名字，推 v0.1.0 wheel）
+- **Launch channel**：Medium 文章（軟發布，v0.1 不發 HN / Reddit）
+- **Demo 素材**：asciinema 錄影 + 3–4 張靜態截圖
+- 向量層維持推遲到 v0.2
+
+### 一 — PyPI metadata 前置
+- [ ] `forget-rag` `pyproject.toml` 補 metadata：description、license、classifiers、keywords、urls
+- [ ] `mem-broom` `pyproject.toml` 同步
+- [ ] 確認兩個名字在 PyPI 還沒被佔
+- [ ] `uv build` 兩包都試包（wheel + sdist）
+- [ ] 設好 PyPI trusted publisher（透過 GitHub Actions OIDC）
+- [ ] commit：`chore: pypi metadata + build setup`
+
+### 二 — Write-up 上半（英文）
+- [ ] 草 `docs/blog/launch.md`：problem → 現有 RAG 為什麼壞 → 三個 primitive → benchmark 數字 → 給誰用 / 不給誰用
+- [ ] 引用 `docs/benchmark.md` 數字，不重抄
+- [ ] 1500–2500 字，中等深度
+- [ ] commit：`docs(blog): launch write-up draft (en)`
+
+### 三 — Write-up 下半 + demo
+- [ ] `docs/blog/launch.zh-TW.md` 中文鏡像
+- [ ] asciinema 錄一段：`mem-broom` walkthrough（add → search → health → maintain → forget），~60 秒
+- [ ] 4 張靜態截圖：CLI stats、CLI health、benchmark 表、架構圖
+- [ ] 素材丟 `docs/media/`
+- [ ] commit：`docs(blog): zh mirror + demo assets`
+
+### 四 — 社群檔
+- [ ] `CONTRIBUTING.md`：dev setup、跑 test、PR 規範
+- [ ] `CODE_OF_CONDUCT.md`：用 Contributor Covenant v2.1
+- [ ] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
+- [ ] `.github/PULL_REQUEST_TEMPLATE.md`
+- [ ] `SECURITY.md`：回報管道、支援版本
+- [ ] commit：`docs: community files (contributing, coc, templates)`
+
+### 五 — Release v0.1.0
+- [ ] `CHANGELOG.md`：scaffold → v0.1.0 全部變更
+- [ ] `git tag v0.1.0` + GitHub Release notes（從 CHANGELOG 拉）
+- [ ] 透過 GitHub Actions publish：`forget-rag==0.1.0`、`mem-broom==0.1.0`
+- [ ] 乾淨環境 smoke：`pip install forget-rag mem-broom` 然後跑 `examples/01_basic_usage.py`
+- [ ] commit：`chore: release v0.1.0`（推 tag）
+
+### 六 — Launch
+- [ ] Medium 文章 publish（英文優先）
+- [ ] 文末附：repo link、benchmark link、example link
+- [ ] 盯：GitHub star、issue、Medium clap/response
+- [ ] P0 bug 立刻 triage + patch
+- [ ] hotfix commit（如果有需要）
+
+### 日 — Retro + v0.2 計畫
+- [ ] `docs/retro/v0.1.md`：4 週回顧、哪邊有效/無效、scope cut 決策回顧
+- [ ] 草 Week 5+：向量層（bge-m3 + RRF）、`restore` 子命令、用戶回饋項
+- [ ] Week 5+ 寫進 ROADMAP（雙語）
+- [ ] commit：`docs: v0.1 retro + v0.2 roadmap`
 
 ---
 
