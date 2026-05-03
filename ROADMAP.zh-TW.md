@@ -70,11 +70,11 @@ Week 1 末確認的決策：
 - [x] commit：`feat(adapter): forgetting retriever sync + async`
 
 ### 三 — Benchmark harness
-- [ ] `benchmark.py`：`make_corpus(n, age_distribution, seed)` 合成生成器
-- [ ] `make_query_set(corpus, n, seed)`：含 ground-truth 相關 id
-- [ ] `measure(memory, queries)`：回延遲 p50/p95 + precision@5
-- [ ] 可重現性測試（同 seed 同結果）
-- [ ] commit：`feat(bench): synthetic corpus + metric collector`
+- [x] `benchmark.py`：`make_corpus(n, age_distribution, seed)` 合成生成器
+- [x] `make_query_set(corpus, n, seed)`：含 ground-truth 相關 id
+- [x] `measure(memory, queries)`：回延遲 p50/p95 + precision@5
+- [x] 可重現性測試（同 seed 同結果）
+- [x] commit：`feat(bench): synthetic corpus + metric collector`
 
 ### 四 — 跑實驗
 - [ ] 三組設定：A=純 BM25、B=BM25+heat、C=B+maintenance

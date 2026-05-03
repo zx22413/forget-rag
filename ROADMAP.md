@@ -70,11 +70,11 @@ Decisions locked end of Week 1:
 - [x] Commit: `feat(adapter): forgetting retriever sync + async`
 
 ### Wed — Benchmark harness
-- [ ] `benchmark.py`: `make_corpus(n, age_distribution, seed)` — synthetic generator
-- [ ] `make_query_set(corpus, n, seed)` — queries with ground-truth relevant ids
-- [ ] `measure(memory, queries)` — returns latency p50/p95 + precision@5
-- [ ] Tests for harness reproducibility (same seed → same output)
-- [ ] Commit: `feat(bench): synthetic corpus + metric collector`
+- [x] `benchmark.py`: `make_corpus(n, age_distribution, seed)` — synthetic generator
+- [x] `make_query_set(corpus, n, seed)` — queries with ground-truth relevant ids
+- [x] `measure(memory, queries)` — returns latency p50/p95 + precision@5
+- [x] Tests for harness reproducibility (same seed → same output)
+- [x] Commit: `feat(bench): synthetic corpus + metric collector`
 
 ### Thu — Run experiments
 - [ ] Three configs: A=pure BM25, B=BM25+heat, C=B+maintenance
