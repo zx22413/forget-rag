@@ -49,7 +49,56 @@
 - [x] commit：`docs: v0 README + diagram`（已在初始 scaffold 包含）
 
 ## Week 2：LangChain adapter + benchmark
-*(Week 1 結束時詳細規劃)*
+
+Week 1 末確認的決策：
+- Adapter 形式：**只做 `BaseRetriever`**（不做 `VectorStore`——v0.1 沒向量層，硬扮等於騙用戶）。另外加一個 **Chroma 整合範例**，讓現有 Chroma 用戶看到怎麼把 forget-rag 包在外面。
+- Benchmark 語料：**合成假資料**（時間戳完全可控、可重現）——不用 Wikipedia / BEIR。
+- 指標：**搜尋延遲**（速度）+ **Precision@5**（答案準度）兩項。
+
+### 一 — LangChain spike + scaffolding
+- [ ] 研究 `langchain-core` 的 `BaseRetriever` 介面（Context7 + GitHub 搜尋）
+- [ ] 加 `langchain-core>=0.3` 到 optional dep group `[langchain]`
+- [ ] 建 `adapters/__init__.py` 與 `adapters/langchain.py` 骨架
+- [ ] Smoke test：沒裝 `langchain-core` 時 import 也不會炸
+- [ ] commit：`feat(adapter): langchain scaffolding`
+
+### 二 — ForgettingRetriever
+- [ ] `ForgettingRetriever` 繼承 `BaseRetriever`
+- [ ] `_get_relevant_documents(query)` → `list[Document]`，metadata 含 id/heat/tier/score/tags
+- [ ] async `_aget_relevant_documents`（v0.1 用 executor 跑同步版）
+- [ ] dev group 裝 langchain-core 跑測試
+- [ ] commit：`feat(adapter): forgetting retriever sync + async`
+
+### 三 — Benchmark harness
+- [ ] `benchmark.py`：`make_corpus(n, age_distribution, seed)` 合成生成器
+- [ ] `make_query_set(corpus, n, seed)`：含 ground-truth 相關 id
+- [ ] `measure(memory, queries)`：回延遲 p50/p95 + precision@5
+- [ ] 可重現性測試（同 seed 同結果）
+- [ ] commit：`feat(bench): synthetic corpus + metric collector`
+
+### 四 — 跑實驗
+- [ ] 三組設定：A=純 BM25、B=BM25+heat、C=B+maintenance
+- [ ] 三種 corpus size：1k / 10k / 100k chunks
+- [ ] 原始 JSON 存到 `docs/benchmark_data/results.json`
+- [ ] 產 ASCII 表格供 markdown 嵌入
+- [ ] commit：`feat(bench): heat vs no-heat experiments`
+
+### 五 — Write up
+- [ ] `docs/benchmark.md`：方法、結果、分析、「證明了什麼 / 沒證明什麼」
+- [ ] `docs/benchmark.zh-TW.md`：中文鏡像
+- [ ] README：把 `(coming Week 2)` 換成真連結
+- [ ] commit：`docs(bench): write-up + readme link`
+
+### 六 — LangChain + Chroma 範例
+- [ ] `examples/02_langchain_retriever.py`：最小的 retriever 接到 chain
+- [ ] `examples/03_chroma_with_forget_rag.py`：Chroma 負責向量召回，forget-rag 用 heat 重排
+- [ ] 雙語 docstring + `.out.txt` transcript 留檔
+- [ ] commit：`docs: langchain + chroma examples`
+
+### 日 — Buffer / push
+- [ ] 從乾淨 clone 跑 smoke（`uv sync && pytest && examples`）
+- [ ] 全部 push
+- [ ] commit：`chore: week 2 close`
 
 ## Week 3：mem-broom CLI
 *(Week 2 結束時詳細規劃)*
