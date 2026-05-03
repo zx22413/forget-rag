@@ -12,9 +12,8 @@ from pathlib import Path
 
 import pytest
 from forget_rag import ForgettingMemory
-from typer.testing import CliRunner
-
 from mem_broom.cli import app
+from typer.testing import CliRunner
 
 runner = CliRunner()
 NOW = datetime(2026, 5, 3, 12, 0, 0, tzinfo=UTC)

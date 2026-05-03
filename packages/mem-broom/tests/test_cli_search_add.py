@@ -15,9 +15,8 @@ from pathlib import Path
 
 import pytest
 from forget_rag import ForgettingMemory
-from typer.testing import CliRunner
-
 from mem_broom.cli import app
+from typer.testing import CliRunner
 
 runner = CliRunner()
 

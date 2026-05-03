@@ -289,7 +289,7 @@ def maintain(
 
 @app.command()
 def forget(
-    chunk_ids: list[str] = typer.Argument(
+    chunk_ids: list[str] = typer.Argument(  # noqa: B008 — typer pattern
         ...,
         metavar="ID...",
         help="One or more chunk ids to soft-delete.",
