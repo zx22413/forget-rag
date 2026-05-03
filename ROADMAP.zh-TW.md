@@ -123,11 +123,11 @@ Week 2 末確認的決策：
 - [x] commit：`feat(cli): stats + health commands`
 
 ### 三 — 寫入指令：maintain + forget
-- [ ] `mem-broom maintain [--db PATH] [--json]`：跑 `maintenance()`、印新 tier 分布
-- [ ] `mem-broom forget <id>... [--yes] [--db PATH]`：軟刪除，預設要 confirm
-- [ ] confirmation prompt 用 `typer.confirm`，`--yes` 直接跳過
-- [ ] 測試：confirm decline 不會刪、`--yes` 真的刪
-- [ ] commit：`feat(cli): maintain + forget commands`
+- [x] `mem-broom maintain [--db PATH] [--json]`：跑 `maintenance()`、印新 tier 分布
+- [x] `mem-broom forget <id>... [--yes] [--db PATH]`：軟刪除，預設要 confirm
+- [x] confirmation prompt 用 `typer.confirm`，`--yes` 直接跳過
+- [x] 測試：confirm decline 不會刪、`--yes` 真的刪
+- [x] commit：`feat(cli): maintain + forget commands`
 
 ### 四 — search + add
 - [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`

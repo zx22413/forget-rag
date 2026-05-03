@@ -224,5 +224,123 @@ def health(
         console.print("[green]No stale chunks.[/]")
 
 
+# --- maintain ------------------------------------------------------------
+
+
+@app.command()
+def maintain(
+    db: Path = DbOption,
+    namespace: str = NamespaceOption,
+    halflife: float = HalflifeOption,
+    json_out: bool = JsonOption,
+) -> None:
+    """Run maintenance(): recompute heat and reshuffle tier assignments."""
+    with ForgettingMemory(
+        sqlite_path=db,
+        namespace=namespace,
+        decay_halflife_days=halflife,
+    ) as mem:
+        distribution = mem.maintenance()
+        total = mem.count()
+
+    if json_out:
+        emit_json(
+            {
+                "ok": True,
+                "data": {
+                    "namespace": namespace,
+                    "db": str(db),
+                    "total": total,
+                    "tier_distribution": distribution,
+                },
+                "error": None,
+            }
+        )
+        return
+
+    console.print(
+        f"[bold]Maintenance run[/] — namespace=[cyan]{namespace}[/] db=[cyan]{db}[/]"
+    )
+    console.print(f"Total alive: [bold]{total}[/]")
+
+    tier_table = Table(title="New tier distribution", show_header=True)
+    tier_table.add_column("Tier")
+    tier_table.add_column("Count", justify="right")
+    for tier, count in distribution.items():
+        tier_table.add_row(tier, str(count))
+    console.print(tier_table)
+
+
+# --- forget --------------------------------------------------------------
+
+
+@app.command()
+def forget(
+    chunk_ids: list[str] = typer.Argument(
+        ...,
+        metavar="ID...",
+        help="One or more chunk ids to soft-delete.",
+    ),
+    db: Path = DbOption,
+    namespace: str = NamespaceOption,
+    yes: bool = typer.Option(
+        False,
+        "--yes",
+        "-y",
+        help="Skip confirmation prompt.",
+    ),
+    json_out: bool = JsonOption,
+) -> None:
+    """Soft-delete chunks by id. Prompts for confirmation unless --yes."""
+    if not chunk_ids:
+        raise typer.BadParameter("at least one ID is required")
+
+    if not yes:
+        preview = ", ".join(cid[:12] for cid in chunk_ids)
+        confirmed = typer.confirm(
+            f"Forget {len(chunk_ids)} chunk(s) [{preview}] in namespace "
+            f"'{namespace}'?",
+            default=False,
+        )
+        if not confirmed:
+            if json_out:
+                emit_json(
+                    {
+                        "ok": False,
+                        "data": {"forgotten": 0, "ids": list(chunk_ids)},
+                        "error": "aborted by user",
+                    }
+                )
+            else:
+                console.print("[yellow]Aborted — nothing forgotten.[/]")
+            raise typer.Exit(code=1)
+
+    with ForgettingMemory(
+        sqlite_path=db,
+        namespace=namespace,
+    ) as mem:
+        affected = mem.forget(list(chunk_ids))
+
+    if json_out:
+        emit_json(
+            {
+                "ok": True,
+                "data": {
+                    "namespace": namespace,
+                    "db": str(db),
+                    "requested": len(chunk_ids),
+                    "forgotten": affected,
+                    "ids": list(chunk_ids),
+                },
+                "error": None,
+            }
+        )
+        return
+
+    console.print(
+        f"[green]Forgotten {affected} of {len(chunk_ids)} requested chunk(s).[/]"
+    )
+
+
 if __name__ == "__main__":
     app()

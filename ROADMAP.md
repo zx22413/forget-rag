@@ -123,11 +123,11 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `feat(cli): stats + health commands`
 
 ### Wed — Write commands: maintain + forget
-- [ ] `mem-broom maintain [--db PATH] [--json]`: run `maintenance()`, print new tier distribution
-- [ ] `mem-broom forget <id>... [--yes] [--db PATH]`: soft-delete; confirm by default
-- [ ] Confirmation via `typer.confirm`; `--yes` skips
-- [ ] Tests: declined confirm doesn't delete; `--yes` actually deletes
-- [ ] Commit: `feat(cli): maintain + forget commands`
+- [x] `mem-broom maintain [--db PATH] [--json]`: run `maintenance()`, print new tier distribution
+- [x] `mem-broom forget <id>... [--yes] [--db PATH]`: soft-delete; confirm by default
+- [x] Confirmation via `typer.confirm`; `--yes` skips
+- [x] Tests: declined confirm doesn't delete; `--yes` actually deletes
+- [x] Commit: `feat(cli): maintain + forget commands`
 
 ### Thu — search + add
 - [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
