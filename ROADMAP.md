@@ -96,9 +96,9 @@ Decisions locked end of Week 1:
 - [x] Commit: `docs: langchain + chroma examples`
 
 ### Sun — Buffer / push
-- [ ] Smoke from clean clone (`uv sync && pytest && examples`)
+- [x] Smoke from clean clone (`uv sync && pytest && examples`)
 - [ ] Push everything
-- [ ] Commit: `chore: week 2 close`
+- [x] Commit: `chore: week 2 close`
 
 ## Week 3: mem-broom CLI
 *(detailed plan written end of Week 2)*

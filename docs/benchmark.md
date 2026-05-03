@@ -36,16 +36,19 @@ prefer the freshest version — the situation forget-rag is built for.
 ```
 config                   n_chunks   n_q   p50 ms   p95 ms   mean ms    P@1    P@5
 ---------------------------------------------------------------------------------
-bm25_only                    1000   100     0.40     0.70      0.44 11.00% 50.00%
-bm25_heat                    1000   100     0.40     0.50      0.41 59.00% 59.00%
-bm25_heat_m                  1000   100     0.43     0.64      0.45 59.00% 59.00%
-bm25_only                   10000   100     1.01     1.76      1.13  0.00%  7.00%
-bm25_heat                   10000   100     1.16     1.94      1.25 32.00% 32.00%
-bm25_heat_m                 10000   100     1.42     2.61      1.55 32.00% 32.00%
-bm25_only                  100000   100     9.44    11.23      9.56  0.00%  0.00%
-bm25_heat                  100000   100     9.89    12.43      9.96  0.00%  0.00%
-bm25_heat_m                100000   100    12.24    14.86     12.50  0.00%  0.00%
+bm25_only                    1000   100     0.43     1.07      0.51 11.00% 50.00%
+bm25_heat                    1000   100     0.45     0.87      0.52 59.00% 59.00%
+bm25_heat_m                  1000   100     0.55     1.11      0.62 59.00% 59.00%
+bm25_only                   10000   100     1.28     2.47      1.44  0.00%  7.00%
+bm25_heat                   10000   100     3.80     6.65      4.02 32.00% 32.00%
+bm25_heat_m                 10000   100     4.67     7.42      5.00 32.00% 32.00%
+bm25_only                  100000   100    25.97    32.04     25.71  0.00%  0.00%
+bm25_heat                  100000   100    13.77    17.41     14.01  0.00%  0.00%
+bm25_heat_m                100000   100    19.94    28.42     20.55  0.00%  0.00%
 ```
+
+Latency varies ±50% between runs on a busy laptop; precision is
+deterministic from the seeded corpus and queries.
 
 Raw results: [`docs/benchmark_data/results.json`](benchmark_data/results.json).
 

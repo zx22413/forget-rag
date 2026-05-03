@@ -96,9 +96,9 @@ Week 1 末確認的決策：
 - [x] commit：`docs: langchain + chroma examples`
 
 ### 日 — Buffer / push
-- [ ] 從乾淨 clone 跑 smoke（`uv sync && pytest && examples`）
+- [x] 從乾淨 clone 跑 smoke（`uv sync && pytest && examples`）
 - [ ] 全部 push
-- [ ] commit：`chore: week 2 close`
+- [x] commit：`chore: week 2 close`
 
 ## Week 3：mem-broom CLI
 *(Week 2 結束時詳細規劃)*
