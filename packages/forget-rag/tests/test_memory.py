@@ -1,0 +1,209 @@
+"""Tests for ForgettingMemory — the public API surface.
+
+Covers add/search/forget round-trip, heat-aware ranking, and the
+promotion side-effect of search.
+"""
+
+from __future__ import annotations
+
+from datetime import UTC, datetime, timedelta
+
+import pytest
+from forget_rag import Chunk, ForgettingMemory
+
+NOW = datetime(2026, 5, 3, 12, 0, 0, tzinfo=UTC)
+
+
+@pytest.fixture
+def mem() -> ForgettingMemory:
+    return ForgettingMemory(sqlite_path=":memory:")
+
+
+# --- construction --------------------------------------------------------
+
+
+def test_default_init_uses_sqlite_in_memory_via_explicit_path() -> None:
+    m = ForgettingMemory(sqlite_path=":memory:")
+    assert m.count() == 0
+    m.close()
+
+
+def test_unsupported_backend_raises() -> None:
+    with pytest.raises(NotImplementedError, match="v0.2"):
+        ForgettingMemory(backend="langchain", sqlite_path=":memory:")
+
+
+@pytest.mark.parametrize("bad", [0, -1.0, -100.0])
+def test_negative_halflife_rejected(bad: float) -> None:
+    with pytest.raises(ValueError, match="decay_halflife_days"):
+        ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=bad)
+
+
+def test_negative_heat_weight_rejected() -> None:
+    with pytest.raises(ValueError, match="heat_boost_weight"):
+        ForgettingMemory(sqlite_path=":memory:", heat_boost_weight=-0.1)
+
+
+def test_context_manager_closes(mem: ForgettingMemory) -> None:
+    with ForgettingMemory(sqlite_path=":memory:") as m:
+        m.add("hello")
+    # Backend closed — using it should raise.
+    import sqlite3
+
+    with pytest.raises(sqlite3.ProgrammingError):
+        m.count()
+
+
+# --- add -----------------------------------------------------------------
+
+
+def test_add_returns_id_and_count_increments(mem: ForgettingMemory) -> None:
+    cid = mem.add("hello world")
+    assert isinstance(cid, str) and len(cid) > 0
+    assert mem.count() == 1
+
+
+def test_add_rejects_empty_text(mem: ForgettingMemory) -> None:
+    with pytest.raises(ValueError, match="non-empty"):
+        mem.add("")
+
+
+def test_add_persists_tags_and_metadata(mem: ForgettingMemory) -> None:
+    cid = mem.add("hello", tags=["a", "b"], metadata={"k": "v"})
+    hits = mem.search("hello", limit=1)
+    assert len(hits) == 1
+    assert hits[0].id == cid
+    assert hits[0].tags == ["a", "b"]
+
+
+# --- search --------------------------------------------------------------
+
+
+def test_search_empty_query_returns_empty(mem: ForgettingMemory) -> None:
+    mem.add("hello")
+    assert mem.search("") == []
+
+
+def test_search_finds_added_text(mem: ForgettingMemory) -> None:
+    mem.add("the quick brown fox", tags=["animal"])
+    mem.add("python programming", tags=["tech"])
+
+    hits = mem.search("fox")
+    assert len(hits) == 1
+    assert "fox" in hits[0].text
+
+
+def test_search_returns_chunk_dataclass(mem: ForgettingMemory) -> None:
+    mem.add("python is fun")
+    hits = mem.search("python")
+    assert len(hits) == 1
+    assert isinstance(hits[0], Chunk)
+    assert hits[0].heat > 0
+    assert hits[0].score > 0
+    assert hits[0].tier == "L1"
+
+
+def test_search_respects_limit(mem: ForgettingMemory) -> None:
+    for i in range(10):
+        mem.add(f"python sample {i}")
+    assert len(mem.search("python", limit=3)) == 3
+
+
+def test_search_excludes_forgotten(mem: ForgettingMemory) -> None:
+    cid = mem.add("the quick brown fox")
+    mem.forget([cid])
+    assert mem.search("fox") == []
+
+
+def test_search_marks_chunks_accessed(mem: ForgettingMemory) -> None:
+    """Promotion signal: search bumps access_count for returned chunks."""
+    mem.add("python is great")
+    # First search — heat from access bonus is 0 (count was 0)
+    first = mem.search("python", now=NOW)
+    heat_before = first[0].heat
+
+    # Second search — access_count incremented, recent access window open
+    second = mem.search("python", now=NOW + timedelta(hours=1))
+    heat_after = second[0].heat
+
+    assert heat_after > heat_before, "access bonus should raise heat"
+
+
+# --- heat-aware ranking --------------------------------------------------
+
+
+def test_hotter_chunk_outranks_colder_with_equal_relevance() -> None:
+    """Two chunks with the same text — the recently-accessed one wins."""
+    mem = ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=10.0)
+    try:
+        # Both chunks contain 'banana'. cold_id is older; hot_id we'll
+        # access right before the search.
+        cold_id = mem.add("banana")
+        hot_id = mem.add("banana")
+
+        # Access the hot one a few times to build access bonus.
+        for _ in range(5):
+            mem.search("banana", limit=2, now=NOW)
+            # mark_accessed runs on both since both match — but we can
+            # offset by accessing hot_id directly via the backend hook.
+            mem._backend.mark_accessed(hot_id, now=NOW)
+
+        hits = mem.search("banana", limit=2, now=NOW + timedelta(minutes=1))
+        assert hits[0].id == hot_id
+        assert hits[1].id == cold_id
+    finally:
+        mem.close()
+
+
+def test_pure_bm25_when_heat_weight_zero() -> None:
+    """heat_boost_weight=0 means heat doesn't affect ordering."""
+    mem = ForgettingMemory(sqlite_path=":memory:", heat_boost_weight=0.0)
+    try:
+        a = mem.add("python python python")  # higher BM25
+        b = mem.add("python is one of many")  # lower BM25
+        hits = mem.search("python", limit=2, now=NOW)
+        assert hits[0].id == a
+        assert hits[1].id == b
+    finally:
+        mem.close()
+
+
+# --- forget --------------------------------------------------------------
+
+
+def test_forget_returns_affected_count(mem: ForgettingMemory) -> None:
+    a = mem.add("a")
+    b = mem.add("b")
+    assert mem.forget([a, b]) == 2
+    assert mem.count() == 0
+
+
+def test_forget_empty_list_is_zero(mem: ForgettingMemory) -> None:
+    assert mem.forget([]) == 0
+
+
+def test_forget_unknown_id_is_zero(mem: ForgettingMemory) -> None:
+    assert mem.forget(["does-not-exist"]) == 0
+
+
+def test_forget_is_idempotent(mem: ForgettingMemory) -> None:
+    cid = mem.add("foo")
+    assert mem.forget([cid]) == 1
+    assert mem.forget([cid]) == 0
+
+
+# --- round-trip ----------------------------------------------------------
+
+
+def test_full_round_trip(mem: ForgettingMemory) -> None:
+    """add -> search -> forget -> search returns nothing."""
+    cid = mem.add("the only chunk", tags=["solo"])
+    hits = mem.search("only")
+    assert len(hits) == 1
+    assert hits[0].id == cid
+
+    n = mem.forget([cid])
+    assert n == 1
+
+    assert mem.search("only") == []
+    assert mem.count() == 0

@@ -18,11 +18,11 @@
 - [x] commit：`feat: sqlite backend + heat decay`
 
 ### 三 — Add / Search / Forget
-- [ ] `ForgettingMemory.add()` — 寫入 + FTS 索引
-- [ ] `ForgettingMemory.search()` — BM25 + 熱度加權（v0.1 第一波先跳過向量）
-- [ ] `ForgettingMemory.forget()` — soft delete
-- [ ] round-trip 測試
-- [ ] commit：`feat: add/search/forget primitives`
+- [x] `ForgettingMemory.add()` — 寫入 + FTS 索引
+- [x] `ForgettingMemory.search()` — BM25 + 熱度加權（v0.1 第一波先跳過向量）
+- [x] `ForgettingMemory.forget()` — soft delete
+- [x] round-trip 測試
+- [x] commit：`feat: add/search/forget primitives`
 
 ### 四 — 分層轉移
 - [ ] `tiers.py`：L1→L2→L3 邏輯與閾值

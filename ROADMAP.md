@@ -18,11 +18,11 @@
 - [x] Commit: `feat: sqlite backend + heat decay`
 
 ### Wed — Add / search / forget
-- [ ] `ForgettingMemory.add()` — insert + FTS index
-- [ ] `ForgettingMemory.search()` — BM25 + heat boost (skip vector wave 1)
-- [ ] `ForgettingMemory.forget()` — soft delete
-- [ ] Tests for round-trip
-- [ ] Commit: `feat: add/search/forget primitives`
+- [x] `ForgettingMemory.add()` — insert + FTS index
+- [x] `ForgettingMemory.search()` — BM25 + heat boost (skip vector wave 1)
+- [x] `ForgettingMemory.forget()` — soft delete
+- [x] Tests for round-trip
+- [x] Commit: `feat: add/search/forget primitives`
 
 ### Thu — Tier transitions
 - [ ] `tiers.py`: L1→L2→L3 logic with thresholds
