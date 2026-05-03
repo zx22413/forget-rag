@@ -56,11 +56,11 @@ Decisions locked end of Week 1:
 - Metrics: **latency** + **Precision@5** only.
 
 ### Mon — LangChain spike + scaffolding
-- [ ] Research `langchain-core` `BaseRetriever` interface (Context7 + GitHub search)
-- [ ] Add `langchain-core>=0.3` as optional dep group `[langchain]`
-- [ ] Create `adapters/__init__.py` and `adapters/langchain.py` skeleton
-- [ ] Smoke test: import works without `langchain-core` installed (graceful)
-- [ ] Commit: `feat(adapter): langchain scaffolding`
+- [x] Research `langchain-core` `BaseRetriever` interface (Context7 + GitHub search)
+- [x] Add `langchain-core>=0.3` as optional dep group `[langchain]`
+- [x] Create `adapters/__init__.py` and `adapters/langchain.py` skeleton
+- [x] Smoke test: import works without `langchain-core` installed (graceful)
+- [x] Commit: `feat(adapter): langchain scaffolding`
 
 ### Tue — ForgettingRetriever
 - [ ] `ForgettingRetriever` extends `BaseRetriever`

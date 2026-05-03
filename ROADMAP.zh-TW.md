@@ -56,11 +56,11 @@ Week 1 末確認的決策：
 - 指標：**搜尋延遲**（速度）+ **Precision@5**（答案準度）兩項。
 
 ### 一 — LangChain spike + scaffolding
-- [ ] 研究 `langchain-core` 的 `BaseRetriever` 介面（Context7 + GitHub 搜尋）
-- [ ] 加 `langchain-core>=0.3` 到 optional dep group `[langchain]`
-- [ ] 建 `adapters/__init__.py` 與 `adapters/langchain.py` 骨架
-- [ ] Smoke test：沒裝 `langchain-core` 時 import 也不會炸
-- [ ] commit：`feat(adapter): langchain scaffolding`
+- [x] 研究 `langchain-core` 的 `BaseRetriever` 介面（Context7 + GitHub 搜尋）
+- [x] 加 `langchain-core>=0.3` 到 optional dep group `[langchain]`
+- [x] 建 `adapters/__init__.py` 與 `adapters/langchain.py` 骨架
+- [x] Smoke test：沒裝 `langchain-core` 時 import 也不會炸
+- [x] commit：`feat(adapter): langchain scaffolding`
 
 ### 二 — ForgettingRetriever
 - [ ] `ForgettingRetriever` 繼承 `BaseRetriever`
