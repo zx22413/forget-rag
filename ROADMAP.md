@@ -170,10 +170,10 @@ Decisions confirmed end of Week 3:
 - [x] Commit: `chore: pypi metadata + build setup`
 
 ### Tue — Write-up part 1 (English)
-- [ ] Draft `docs/blog/launch.md`: problem → why existing RAG breaks → three primitives → benchmark numbers → who is / isn't this for
-- [ ] Reference `docs/benchmark.md` figures, don't duplicate
-- [ ] 1500–2500 words, medium depth
-- [ ] Commit: `docs(blog): launch write-up draft (en)`
+- [x] Draft `docs/blog/launch.md`: problem → why existing RAG breaks → three primitives → benchmark numbers → who is / isn't this for
+- [x] Reference `docs/benchmark.md` figures, don't duplicate
+- [x] 1500–2500 words, medium depth
+- [x] Commit: `docs(blog): launch write-up draft (en)`
 
 ### Wed — Write-up part 2 + demo
 - [ ] `docs/blog/launch.zh-TW.md` mirror

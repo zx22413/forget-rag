@@ -170,10 +170,10 @@ Week 3 末確認的決策：
 - [x] commit：`chore: pypi metadata + build setup`
 
 ### 二 — Write-up 上半（英文）
-- [ ] 草 `docs/blog/launch.md`：problem → 現有 RAG 為什麼壞 → 三個 primitive → benchmark 數字 → 給誰用 / 不給誰用
-- [ ] 引用 `docs/benchmark.md` 數字，不重抄
-- [ ] 1500–2500 字，中等深度
-- [ ] commit：`docs(blog): launch write-up draft (en)`
+- [x] 草 `docs/blog/launch.md`：problem → 現有 RAG 為什麼壞 → 三個 primitive → benchmark 數字 → 給誰用 / 不給誰用
+- [x] 引用 `docs/benchmark.md` 數字，不重抄
+- [x] 1500–2500 字，中等深度
+- [x] commit：`docs(blog): launch write-up draft (en)`
 
 ### 三 — Write-up 下半 + demo
 - [ ] `docs/blog/launch.zh-TW.md` 中文鏡像
