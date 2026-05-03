@@ -183,12 +183,12 @@ Decisions confirmed end of Week 3:
 - [ ] Commit: `docs(blog): zh mirror + demo assets`
 
 ### Thu — Community files
-- [ ] `CONTRIBUTING.md`: dev setup, running tests, PR conventions
-- [ ] `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1
-- [ ] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
-- [ ] `.github/PULL_REQUEST_TEMPLATE.md`
-- [ ] `SECURITY.md`: how to report, supported versions
-- [ ] Commit: `docs: community files (contributing, coc, templates)`
+- [x] `CONTRIBUTING.md`: dev setup, running tests, PR conventions
+- [x] `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1
+- [x] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
+- [x] `.github/PULL_REQUEST_TEMPLATE.md`
+- [x] `SECURITY.md`: how to report, supported versions
+- [x] Commit: `docs: community files (contributing, coc, templates)`
 
 ### Fri — Release v0.1.0
 - [ ] `CHANGELOG.md`: every change from scaffold → v0.1.0

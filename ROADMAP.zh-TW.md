@@ -183,12 +183,12 @@ Week 3 末確認的決策：
 - [ ] commit：`docs(blog): zh mirror + demo assets`
 
 ### 四 — 社群檔
-- [ ] `CONTRIBUTING.md`：dev setup、跑 test、PR 規範
-- [ ] `CODE_OF_CONDUCT.md`：用 Contributor Covenant v2.1
-- [ ] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
-- [ ] `.github/PULL_REQUEST_TEMPLATE.md`
-- [ ] `SECURITY.md`：回報管道、支援版本
-- [ ] commit：`docs: community files (contributing, coc, templates)`
+- [x] `CONTRIBUTING.md`：dev setup、跑 test、PR 規範
+- [x] `CODE_OF_CONDUCT.md`：用 Contributor Covenant v2.1
+- [x] `.github/ISSUE_TEMPLATE/bug_report.md` + `feature_request.md`
+- [x] `.github/PULL_REQUEST_TEMPLATE.md`
+- [x] `SECURITY.md`：回報管道、支援版本
+- [x] commit：`docs: community files (contributing, coc, templates)`
 
 ### 五 — Release v0.1.0
 - [ ] `CHANGELOG.md`：scaffold → v0.1.0 全部變更
