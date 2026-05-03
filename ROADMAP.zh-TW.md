@@ -7,15 +7,15 @@
 ### 一 — 專案骨架
 - [x] 建空的 `forget-rag` repo（公開、MIT、不含 Brain 內容）
 - [x] monorepo 目錄按 SPEC.md 擺好
-- [ ] `pyproject.toml` 用 `uv` workspace，Python 3.11+
-- [ ] CI：GitHub Actions 跑 pytest（5 分鐘工作）
+- [x] `pyproject.toml` 用 `uv` workspace，Python 3.11+
+- [x] CI：GitHub Actions 跑 pytest（5 分鐘工作）
 - [x] 第一個 commit：`chore: initial scaffold`
 
 ### 二 — SQLite 後端 + 熱度分數
-- [ ] `chunks` schema + FTS5 虛擬表
-- [ ] `heat.py`：衰減函數，`decay_halflife_days` 參數
-- [ ] 熱度單元測試（3 case：新鮮 / 老舊 / 加成）
-- [ ] commit：`feat: sqlite backend + heat decay`
+- [x] `chunks` schema + FTS5 虛擬表
+- [x] `heat.py`：衰減函數，`decay_halflife_days` 參數
+- [x] 熱度單元測試（3 case：新鮮 / 老舊 / 加成）
+- [x] commit：`feat: sqlite backend + heat decay`
 
 ### 三 — Add / Search / Forget
 - [ ] `ForgettingMemory.add()` — 寫入 + FTS 索引

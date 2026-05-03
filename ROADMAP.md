@@ -7,15 +7,15 @@
 ### Mon — Project skeleton
 - [x] Create empty `forget-rag` repo on GitHub (PUBLIC, MIT, no Brain content)
 - [x] Set up monorepo layout (per SPEC.md)
-- [ ] `pyproject.toml` with `uv` workspace, Python 3.11+
-- [ ] CI: GitHub Actions running pytest on push (5-min job)
+- [x] `pyproject.toml` with `uv` workspace, Python 3.11+
+- [x] CI: GitHub Actions running pytest on push (5-min job)
 - [x] First commit: `chore: initial scaffold`
 
 ### Tue — SQLite backend + heat score
-- [ ] Implement `chunks` schema + FTS5 virtual table
-- [ ] `heat.py`: decay function with `decay_halflife_days` param
-- [ ] Unit tests for heat decay (3 cases: fresh / aged / boosted)
-- [ ] Commit: `feat: sqlite backend + heat decay`
+- [x] Implement `chunks` schema + FTS5 virtual table
+- [x] `heat.py`: decay function with `decay_halflife_days` param
+- [x] Unit tests for heat decay (3 cases: fresh / aged / boosted)
+- [x] Commit: `feat: sqlite backend + heat decay`
 
 ### Wed — Add / search / forget
 - [ ] `ForgettingMemory.add()` — insert + FTS index
