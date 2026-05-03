@@ -84,10 +84,10 @@ Week 1 末確認的決策：
 - [x] commit：`feat(bench): heat vs no-heat experiments`
 
 ### 五 — Write up
-- [ ] `docs/benchmark.md`：方法、結果、分析、「證明了什麼 / 沒證明什麼」
-- [ ] `docs/benchmark.zh-TW.md`：中文鏡像
-- [ ] README：把 `(coming Week 2)` 換成真連結
-- [ ] commit：`docs(bench): write-up + readme link`
+- [x] `docs/benchmark.md`：方法、結果、分析、「證明了什麼 / 沒證明什麼」
+- [x] `docs/benchmark.zh-TW.md`：中文鏡像
+- [x] README：把 `(coming Week 2)` 換成真連結
+- [x] commit：`docs(bench): write-up + readme link`
 
 ### 六 — LangChain + Chroma 範例
 - [ ] `examples/02_langchain_retriever.py`：最小的 retriever 接到 chain

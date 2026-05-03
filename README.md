@@ -16,8 +16,9 @@ Most RAG systems assume data is append-only. After 6–12 months of use:
 - Storage and embedding costs balloon
 - Nobody knows what to delete
 
-We measured this on a 4-year personal knowledge corpus.
-[See benchmark →](docs/benchmark.md) *(coming Week 2)*
+We measured the impact on a synthetic 10-topic corpus: at 10k chunks
+heat boost lifts Precision@1 from 0% to 32%, with <25% latency overhead.
+[See full benchmark →](docs/benchmark.md)
 
 ## What forget-rag does
 

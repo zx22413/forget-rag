@@ -84,10 +84,10 @@ Decisions locked end of Week 1:
 - [x] Commit: `feat(bench): heat vs no-heat experiments`
 
 ### Fri — Write up
-- [ ] `docs/benchmark.md` — method, results, analysis, "what this proves / doesn't prove"
-- [ ] `docs/benchmark.zh-TW.md` — Chinese mirror
-- [ ] README: replace `(coming Week 2)` with real link
-- [ ] Commit: `docs(bench): write-up + readme link`
+- [x] `docs/benchmark.md` — method, results, analysis, "what this proves / doesn't prove"
+- [x] `docs/benchmark.zh-TW.md` — Chinese mirror
+- [x] README: replace `(coming Week 2)` with real link
+- [x] Commit: `docs(bench): write-up + readme link`
 
 ### Sat — LangChain + Chroma examples
 - [ ] `examples/02_langchain_retriever.py` — minimal retriever in a chain

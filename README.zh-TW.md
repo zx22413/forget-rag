@@ -16,8 +16,9 @@
 - 儲存與 embedding 成本爆炸
 - 沒人知道該刪什麼
 
-我用 4 年累積的個人知識庫實測過這件事。
-[看 benchmark →](docs/benchmark.zh-TW.md) *(Week 2 提供)*
+我們在 10 個 topic 的合成 corpus 上量測：1 萬筆規模時 heat 加權把
+Precision@1 從 0% 拉到 32%，延遲只多 <25%。
+[看完整 benchmark →](docs/benchmark.zh-TW.md)
 
 ## forget-rag 在做什麼
 
