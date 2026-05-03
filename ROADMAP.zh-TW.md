@@ -97,7 +97,7 @@ Week 1 末確認的決策：
 
 ### 日 — Buffer / push
 - [x] 從乾淨 clone 跑 smoke（`uv sync && pytest && examples`）
-- [ ] 全部 push
+- [x] 全部 push
 - [x] commit：`chore: week 2 close`
 
 ## Week 3：mem-broom CLI

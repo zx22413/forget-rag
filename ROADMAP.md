@@ -97,7 +97,7 @@ Decisions locked end of Week 1:
 
 ### Sun — Buffer / push
 - [x] Smoke from clean clone (`uv sync && pytest && examples`)
-- [ ] Push everything
+- [x] Push everything
 - [x] Commit: `chore: week 2 close`
 
 ## Week 3: mem-broom CLI
