@@ -108,12 +108,12 @@ Decisions confirmed end of Week 2:
 - `restore` subcommand: **skipped**, deferred to Week 4 / v0.2 (schema has `forgotten_at`, but a backend API still needs to be added)
 
 ### Mon — Scaffold
-- [ ] Create standalone subpackage at `packages/mem-broom/` (sibling to forget-rag)
-- [ ] `pyproject.toml`: depend on `forget-rag` (workspace), `typer>=0.12`, `rich>=13`
-- [ ] Entry point: `mem-broom = mem_broom.cli:app`
-- [ ] Typer skeleton in `mem_broom/cli.py` (empty app + version flag)
-- [ ] Smoke test: `mem-broom --help` runs
-- [ ] Commit: `feat(cli): mem-broom scaffolding`
+- [x] Create standalone subpackage at `packages/mem-broom/` (sibling to forget-rag)
+- [x] `pyproject.toml`: depend on `forget-rag` (workspace), `typer>=0.12`, `rich>=13`
+- [x] Entry point: `mem-broom = mem_broom.cli:app`
+- [x] Typer skeleton in `mem_broom/cli.py` (empty app + version flag)
+- [x] Smoke test: `mem-broom --help` runs
+- [x] Commit: `feat(cli): mem-broom scaffolding`
 
 ### Tue — Read-only commands: stats + health
 - [ ] `mem-broom stats [--db PATH] [--json]`: chunk count, tier distribution, hottest/coldest

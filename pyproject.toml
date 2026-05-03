@@ -8,6 +8,7 @@ description = "Workspace root — see packages/forget-rag for the actual library
 requires-python = ">=3.11"
 dependencies = [
     "forget-rag",
+    "mem-broom",
 ]
 
 [tool.uv.workspace]
@@ -15,6 +16,7 @@ members = ["packages/*"]
 
 [tool.uv.sources]
 forget-rag = { workspace = true }
+mem-broom = { workspace = true }
 
 [dependency-groups]
 dev = [

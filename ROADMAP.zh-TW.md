@@ -108,12 +108,12 @@ Week 2 末確認的決策：
 - `restore` 子命令：**不做**，留到 Week 4 / v0.2（schema 已有 `forgotten_at`，但要新加 backend API）
 
 ### 一 — Scaffold
-- [ ] 在 `packages/mem-broom/` 建獨立子包（sibling to forget-rag）
-- [ ] `pyproject.toml`：依賴 `forget-rag` (workspace)、`typer>=0.12`、`rich>=13`
-- [ ] entry point：`mem-broom = mem_broom.cli:app`
-- [ ] `mem_broom/cli.py` typer 骨架（空 app + version flag）
-- [ ] Smoke test：`mem-broom --help` 跑得起來
-- [ ] commit：`feat(cli): mem-broom scaffolding`
+- [x] 在 `packages/mem-broom/` 建獨立子包（sibling to forget-rag）
+- [x] `pyproject.toml`：依賴 `forget-rag` (workspace)、`typer>=0.12`、`rich>=13`
+- [x] entry point：`mem-broom = mem_broom.cli:app`
+- [x] `mem_broom/cli.py` typer 骨架（空 app + version flag）
+- [x] Smoke test：`mem-broom --help` 跑得起來
+- [x] commit：`feat(cli): mem-broom scaffolding`
 
 ### 二 — 唯讀指令：stats + health
 - [ ] `mem-broom stats [--db PATH] [--json]`：chunk 數、tier 分布、最熱/最冷
