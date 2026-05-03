@@ -130,11 +130,11 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `feat(cli): maintain + forget commands`
 
 ### Thu — search + add
-- [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
-- [ ] `mem-broom add <text> [--tag T]... [--db PATH]`
-- [ ] `add` supports stdin pipe: missing `<text>` reads stdin (`cat foo.md | mem-broom add`)
-- [ ] Tests: pipe behaviour + tag parsing
-- [ ] Commit: `feat(cli): search + add commands`
+- [x] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
+- [x] `mem-broom add <text> [--tag T]... [--db PATH]`
+- [x] `add` supports stdin pipe: missing `<text>` reads stdin (`cat foo.md | mem-broom add`)
+- [x] Tests: pipe behaviour + tag parsing
+- [x] Commit: `feat(cli): search + add commands`
 
 ### Fri — Polish: output format + error handling
 - [ ] Unified JSON envelope: `{"ok": bool, "data": ..., "error": null}`

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import typer
@@ -340,6 +341,141 @@ def forget(
     console.print(
         f"[green]Forgotten {affected} of {len(chunk_ids)} requested chunk(s).[/]"
     )
+
+
+# --- search --------------------------------------------------------------
+
+
+@app.command()
+def search(
+    query: str = typer.Argument(..., metavar="QUERY", help="FTS5 search expression."),
+    db: Path = DbOption,
+    namespace: str = NamespaceOption,
+    halflife: float = HalflifeOption,
+    limit: int = typer.Option(
+        5,
+        "--limit",
+        "-n",
+        min=1,
+        help="Maximum number of chunks to return.",
+    ),
+    json_out: bool = JsonOption,
+) -> None:
+    """Run BM25 + heat search and print the top results."""
+    with ForgettingMemory(
+        sqlite_path=db,
+        namespace=namespace,
+        decay_halflife_days=halflife,
+    ) as mem:
+        results = mem.search(query, limit=limit)
+
+    if json_out:
+        emit_json(
+            {
+                "ok": True,
+                "data": {
+                    "namespace": namespace,
+                    "db": str(db),
+                    "query": query,
+                    "limit": limit,
+                    "results": [
+                        {
+                            "id": c.id,
+                            "text": c.text,
+                            "tags": list(c.tags),
+                            "tier": c.tier,
+                            "heat": c.heat,
+                            "score": c.score,
+                        }
+                        for c in results
+                    ],
+                },
+                "error": None,
+            }
+        )
+        return
+
+    console.print(
+        f"[bold]Search[/] query=[cyan]{query!r}[/] "
+        f"namespace=[cyan]{namespace}[/] db=[cyan]{db}[/]"
+    )
+    if not results:
+        console.print("[yellow]No matches.[/]")
+        return
+
+    table = Table(title=f"Top {len(results)} results", show_header=True)
+    table.add_column("ID")
+    table.add_column("Tier")
+    table.add_column("Heat", justify="right")
+    table.add_column("Score", justify="right")
+    table.add_column("Tags")
+    table.add_column("Text")
+    for c in results:
+        table.add_row(
+            c.id[:12],
+            c.tier,
+            f"{c.heat:.3f}",
+            f"{c.score:.3f}",
+            ",".join(c.tags),
+            truncate(c.text),
+        )
+    console.print(table)
+
+
+# --- add -----------------------------------------------------------------
+
+
+@app.command()
+def add(
+    text: str | None = typer.Argument(
+        None,
+        metavar="[TEXT]",
+        help="Chunk text. If omitted, read from stdin.",
+    ),
+    db: Path = DbOption,
+    namespace: str = NamespaceOption,
+    tag: list[str] = typer.Option(  # noqa: B008 — typer pattern
+        None,
+        "--tag",
+        "-t",
+        help="Tag to attach (repeat for multiple).",
+    ),
+    json_out: bool = JsonOption,
+) -> None:
+    """Insert a new chunk. Pipe content via stdin if no TEXT is given."""
+    if text is None:
+        text = sys.stdin.read()
+    text = text.strip()
+    if not text:
+        raise typer.BadParameter(
+            "text is empty — pass an argument or pipe content via stdin"
+        )
+
+    tags = list(tag) if tag else []
+
+    with ForgettingMemory(
+        sqlite_path=db,
+        namespace=namespace,
+    ) as mem:
+        chunk_id = mem.add(text, tags=tags or None)
+
+    if json_out:
+        emit_json(
+            {
+                "ok": True,
+                "data": {
+                    "namespace": namespace,
+                    "db": str(db),
+                    "id": chunk_id,
+                    "tags": tags,
+                },
+                "error": None,
+            }
+        )
+        return
+
+    tag_blurb = f" tags=[cyan]{','.join(tags)}[/]" if tags else ""
+    console.print(f"[green]Added[/] id=[cyan]{chunk_id}[/]{tag_blurb}")
 
 
 if __name__ == "__main__":

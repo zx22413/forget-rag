@@ -130,11 +130,11 @@ Week 2 末確認的決策：
 - [x] commit：`feat(cli): maintain + forget commands`
 
 ### 四 — search + add
-- [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
-- [ ] `mem-broom add <text> [--tag T]... [--db PATH]`
-- [ ] `add` 支援 stdin pipe：沒給 `<text>` 就讀 stdin（`cat foo.md | mem-broom add`）
-- [ ] 測試：pipe 行為 + tag 解析
-- [ ] commit：`feat(cli): search + add commands`
+- [x] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
+- [x] `mem-broom add <text> [--tag T]... [--db PATH]`
+- [x] `add` 支援 stdin pipe：沒給 `<text>` 就讀 stdin（`cat foo.md | mem-broom add`）
+- [x] 測試：pipe 行為 + tag 解析
+- [x] commit：`feat(cli): search + add commands`
 
 ### 五 — Polish：輸出格式 + 錯誤處理
 - [ ] 統一 JSON envelope：`{"ok": bool, "data": ..., "error": null}`
