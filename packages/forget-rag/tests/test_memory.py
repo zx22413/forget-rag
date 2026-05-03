@@ -268,3 +268,54 @@ def test_health_check_suggests_forgets_for_very_cold_chunks() -> None:
         assert old_id in suggested_ids
     finally:
         mem.close()
+
+
+# --- top_chunks ----------------------------------------------------------
+
+
+def test_top_chunks_empty_when_no_data(mem: ForgettingMemory) -> None:
+    assert mem.top_chunks(limit=5) == []
+
+
+def test_top_chunks_zero_limit(mem: ForgettingMemory) -> None:
+    mem.add("foo")
+    assert mem.top_chunks(limit=0) == []
+
+
+def test_top_chunks_hottest_first() -> None:
+    mem = ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=30.0)
+    try:
+        old_id = mem._backend.insert("ancient", now=NOW - timedelta(days=365))
+        new_id = mem._backend.insert("fresh", now=NOW)
+
+        top = mem.top_chunks(limit=5, hottest=True, now=NOW)
+        assert [c.id for c in top] == [new_id, old_id]
+        assert top[0].heat > top[1].heat
+    finally:
+        mem.close()
+
+
+def test_top_chunks_coldest_first() -> None:
+    mem = ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=30.0)
+    try:
+        old_id = mem._backend.insert("ancient", now=NOW - timedelta(days=365))
+        new_id = mem._backend.insert("fresh", now=NOW)
+
+        bottom = mem.top_chunks(limit=5, hottest=False, now=NOW)
+        assert [c.id for c in bottom] == [old_id, new_id]
+    finally:
+        mem.close()
+
+
+def test_top_chunks_does_not_mark_accessed() -> None:
+    """Unlike search(), top_chunks must have no side effect on heat."""
+    mem = ForgettingMemory(sqlite_path=":memory:", decay_halflife_days=30.0)
+    try:
+        cid = mem._backend.insert("foo", now=NOW - timedelta(days=10))
+        before = next(r for r in mem._backend.iter_alive() if r.id == cid)
+        mem.top_chunks(limit=5, now=NOW)
+        after = next(r for r in mem._backend.iter_alive() if r.id == cid)
+        assert before.last_access == after.last_access
+        assert before.access_count == after.access_count
+    finally:
+        mem.close()

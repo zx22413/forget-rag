@@ -116,11 +116,11 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `feat(cli): mem-broom scaffolding`
 
 ### Tue — Read-only commands: stats + health
-- [ ] `mem-broom stats [--db PATH] [--json]`: chunk count, tier distribution, hottest/coldest
-- [ ] `mem-broom health [--db PATH] [--json]`: run `health_check()`, list forget suggestions
-- [ ] `--json` writes to stdout; human-readable uses `rich.Table`
-- [ ] Unit tests via `typer.testing.CliRunner` against an in-memory DB
-- [ ] Commit: `feat(cli): stats + health commands`
+- [x] `mem-broom stats [--db PATH] [--json]`: chunk count, tier distribution, hottest/coldest
+- [x] `mem-broom health [--db PATH] [--json]`: run `health_check()`, list forget suggestions
+- [x] `--json` writes to stdout; human-readable uses `rich.Table`
+- [x] Unit tests via `typer.testing.CliRunner` against an in-memory DB
+- [x] Commit: `feat(cli): stats + health commands`
 
 ### Wed — Write commands: maintain + forget
 - [ ] `mem-broom maintain [--db PATH] [--json]`: run `maintenance()`, print new tier distribution

@@ -116,11 +116,11 @@ Week 2 末確認的決策：
 - [x] commit：`feat(cli): mem-broom scaffolding`
 
 ### 二 — 唯讀指令：stats + health
-- [ ] `mem-broom stats [--db PATH] [--json]`：chunk 數、tier 分布、最熱/最冷
-- [ ] `mem-broom health [--db PATH] [--json]`：跑 `health_check()` 列建議遺忘
-- [ ] `--json` 走 stdout、人類可讀走 `rich.Table`
-- [ ] 兩個指令的 unit test（用 in-memory DB 跑 typer.testing.CliRunner）
-- [ ] commit：`feat(cli): stats + health commands`
+- [x] `mem-broom stats [--db PATH] [--json]`：chunk 數、tier 分布、最熱/最冷
+- [x] `mem-broom health [--db PATH] [--json]`：跑 `health_check()` 列建議遺忘
+- [x] `--json` 走 stdout、人類可讀走 `rich.Table`
+- [x] 兩個指令的 unit test（用 in-memory DB 跑 typer.testing.CliRunner）
+- [x] commit：`feat(cli): stats + health commands`
 
 ### 三 — 寫入指令：maintain + forget
 - [ ] `mem-broom maintain [--db PATH] [--json]`：跑 `maintenance()`、印新 tier 分布

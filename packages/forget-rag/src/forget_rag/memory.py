@@ -181,6 +181,54 @@ class ForgettingMemory:
         """Number of alive (non-forgotten) chunks in this namespace."""
         return self._backend.count_alive()
 
+    def top_chunks(
+        self,
+        limit: int = 5,
+        *,
+        hottest: bool = True,
+        now: datetime | None = None,
+    ) -> list[Chunk]:
+        """Return up to `limit` chunks ranked by current heat.
+
+        No side effects — unlike search(), this does *not* mark chunks as
+        accessed. Useful for inspection / dashboards / CLI output.
+
+        Args:
+            limit: max chunks returned.
+            hottest: True for descending (hottest first), False for coldest.
+            now: clock injection — useful for tests that fast-forward time.
+        """
+        if limit <= 0:
+            return []
+        now = now or datetime.now(UTC)
+        scored: list[tuple[Chunk, float]] = []
+        for row in self._backend.iter_alive():
+            heat = compute_heat(
+                HeatInputs(
+                    base_score=row.base_score,
+                    created_at=row.created_at,
+                    last_access=row.last_access,
+                    access_count=row.access_count,
+                ),
+                now=now,
+                halflife_days=self._halflife_days,
+            )
+            scored.append(
+                (
+                    Chunk(
+                        id=row.id,
+                        text=row.text,
+                        tags=list(row.tags),
+                        tier=row.tier,
+                        heat=heat,
+                        score=heat,
+                    ),
+                    heat,
+                )
+            )
+        scored.sort(key=lambda x: x[1], reverse=hottest)
+        return [c for c, _ in scored[:limit]]
+
     # --- maintenance & reporting -----------------------------------------
 
     def maintenance(self, *, now: datetime | None = None) -> dict[str, int]:
