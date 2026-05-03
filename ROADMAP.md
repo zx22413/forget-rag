@@ -143,10 +143,10 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `feat(cli): json envelope + error messages`
 
 ### Sat — Examples + docs
-- [ ] `examples/04_cli_walkthrough.md`: end-to-end add → search → health → forget
-- [ ] README mem-broom section (bilingual)
-- [ ] mem-broom's own `packages/mem-broom/README.md`
-- [ ] Commit: `docs: mem-broom cli walkthrough + readme`
+- [x] `examples/04_cli_walkthrough.md`: end-to-end add → search → health → forget
+- [x] README mem-broom section (bilingual)
+- [x] mem-broom's own `packages/mem-broom/README.md`
+- [x] Commit: `docs: mem-broom cli walkthrough + readme`
 
 ### Sun — Buffer / push
 - [ ] Smoke from clean clone: `uv sync && pytest && mem-broom --help`

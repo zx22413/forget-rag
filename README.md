@@ -61,8 +61,23 @@ report = memory.health_check()             # what should be forgotten?
 ## What's included
 
 - [`packages/forget-rag`](packages/forget-rag) — Python library (this is what you install)
-- [`packages/mem-broom`](packages/mem-broom) — CLI tool that uses forget-rag to clean up Claude Code / Cursor memory files *(coming Week 3)*
+- [`packages/mem-broom`](packages/mem-broom) — CLI tool that uses forget-rag to clean up Claude Code / Cursor memory files
 - [`docs/architecture.md`](docs/architecture.md) — diagrams and design rationale
+
+## CLI: `mem-broom`
+
+```bash
+uv sync
+mem-broom add "first note" --db mem.db --tag demo
+mem-broom search "first" --db mem.db
+mem-broom stats   --db mem.db
+mem-broom health  --db mem.db
+mem-broom maintain --db mem.db
+mem-broom forget <id> --db mem.db --yes
+```
+
+Pass `--json` to any subcommand for a `{"ok", "data", "error"}` envelope.
+Full guided tour: [examples/04_cli_walkthrough.md](examples/04_cli_walkthrough.md).
 
 ## Why this exists
 

@@ -61,8 +61,23 @@ report = memory.health_check()             # 列出哪些可以忘
 ## 內容
 
 - [`packages/forget-rag`](packages/forget-rag) — Python 函式庫（你會 pip install 的就是這個）
-- [`packages/mem-broom`](packages/mem-broom) — CLI 工具，用 forget-rag 整理 Claude Code / Cursor 的記憶檔 *(Week 3 提供)*
+- [`packages/mem-broom`](packages/mem-broom) — CLI 工具，用 forget-rag 整理 Claude Code / Cursor 的記憶檔
 - [`docs/architecture.zh-TW.md`](docs/architecture.zh-TW.md) — 架構圖與設計理由
+
+## CLI：`mem-broom`
+
+```bash
+uv sync
+mem-broom add "第一筆筆記" --db mem.db --tag demo
+mem-broom search "第一筆" --db mem.db
+mem-broom stats   --db mem.db
+mem-broom health  --db mem.db
+mem-broom maintain --db mem.db
+mem-broom forget <id> --db mem.db --yes
+```
+
+任一子指令加 `--json` 會吐 `{"ok", "data", "error"}` 信封，方便管道用。
+完整走過：[examples/04_cli_walkthrough.md](examples/04_cli_walkthrough.md)。
 
 ## 為什麼存在
 

@@ -143,10 +143,10 @@ Week 2 末確認的決策：
 - [x] commit：`feat(cli): json envelope + error messages`
 
 ### 六 — 範例 + 文件
-- [ ] `examples/04_cli_walkthrough.md`：從 add → search → health → forget 一條流程
-- [ ] README 加 mem-broom 段落（雙語）
-- [ ] mem-broom 自己的 `packages/mem-broom/README.md`
-- [ ] commit：`docs: mem-broom cli walkthrough + readme`
+- [x] `examples/04_cli_walkthrough.md`：從 add → search → health → forget 一條流程
+- [x] README 加 mem-broom 段落（雙語）
+- [x] mem-broom 自己的 `packages/mem-broom/README.md`
+- [x] commit：`docs: mem-broom cli walkthrough + readme`
 
 ### 日 — Buffer / push
 - [ ] 從乾淨 clone 跑 smoke：`uv sync && pytest && mem-broom --help`

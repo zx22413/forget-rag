@@ -1,20 +1,65 @@
 # mem-broom
 
-CLI broom for [forget-rag](https://github.com/LBDog/forget-rag) — sweep stale chunks out of your RAG memory from the command line.
+CLI broom for [forget-rag](https://github.com/LBDog/forget-rag) — sweep
+stale chunks out of your RAG memory from the command line.
 
-> **Status:** Week 3 in-progress. Today only `--help` and `--version` work; subcommands land day by day.
+> **Status:** Week 3 complete. All six subcommands ship with tests and a
+> walkthrough doc. Vector layer + `restore` land later per ROADMAP.
 
 ## Install
 
 ```bash
+# From the workspace root:
+uv sync                              # installs forget-rag + mem-broom
+# or, standalone:
 pip install -e packages/mem-broom
 ```
+
+## Subcommands
+
+| Command          | Purpose                                              |
+|------------------|------------------------------------------------------|
+| `add`            | Insert a chunk (argument or stdin pipe).             |
+| `search`         | BM25 + heat search, ranked top-N.                    |
+| `stats`          | Chunk count, tier distribution, hottest / coldest.   |
+| `health`         | Suggest forgets and stale chunks (non-destructive).  |
+| `maintain`       | Recompute heat and re-assign tiers.                  |
+| `forget`         | Soft-delete chunks by id (confirm by default).       |
+
+Every command supports `--db PATH`, `--namespace NAME`, and `--json` for
+machine-readable output.
 
 ## Quickstart
 
 ```bash
-mem-broom --help
 mem-broom --version
+mem-broom --help
+mem-broom add "first note" --db /tmp/x.db --tag demo
+mem-broom search "first" --db /tmp/x.db
 ```
 
-Full subcommand walkthrough lands at `examples/04_cli_walkthrough.md` later in Week 3.
+A full guided tour with all subcommands lives at
+[examples/04_cli_walkthrough.md](../../examples/04_cli_walkthrough.md).
+
+## JSON output
+
+Pass `--json` to any command to receive a single envelope on stdout:
+
+```json
+{ "ok": true, "data": { ... }, "error": null }
+```
+
+Errors share the same shape with `ok=false`, `data=null`, and a human
+sentence in `error`.
+
+## Read vs write commands
+
+- **Read commands** (`stats`, `health`, `search`, `forget`, `maintain`)
+  refuse to silently create an empty DB. Pass `--db` to an existing file
+  or run `mem-broom add` first.
+- **`add`** creates the DB if needed — it's the entry point for an
+  empty workspace.
+
+## License
+
+MIT, same as forget-rag.
