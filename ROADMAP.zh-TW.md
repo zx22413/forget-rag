@@ -101,7 +101,57 @@ Week 1 末確認的決策：
 - [x] commit：`chore: week 2 close`
 
 ## Week 3：mem-broom CLI
-*(Week 2 結束時詳細規劃)*
+
+Week 2 末確認的決策：
+- CLI 框架：**typer**（FastAPI 同作者，type-hint 自動產 `--help`、配 `rich` 表格漂亮）
+- 輸出：**人類可讀預設 + `--json` flag**（給管道/腳本串）
+- `restore` 子命令：**不做**，留到 Week 4 / v0.2（schema 已有 `forgotten_at`，但要新加 backend API）
+
+### 一 — Scaffold
+- [ ] 在 `packages/mem-broom/` 建獨立子包（sibling to forget-rag）
+- [ ] `pyproject.toml`：依賴 `forget-rag` (workspace)、`typer>=0.12`、`rich>=13`
+- [ ] entry point：`mem-broom = mem_broom.cli:app`
+- [ ] `mem_broom/cli.py` typer 骨架（空 app + version flag）
+- [ ] Smoke test：`mem-broom --help` 跑得起來
+- [ ] commit：`feat(cli): mem-broom scaffolding`
+
+### 二 — 唯讀指令：stats + health
+- [ ] `mem-broom stats [--db PATH] [--json]`：chunk 數、tier 分布、最熱/最冷
+- [ ] `mem-broom health [--db PATH] [--json]`：跑 `health_check()` 列建議遺忘
+- [ ] `--json` 走 stdout、人類可讀走 `rich.Table`
+- [ ] 兩個指令的 unit test（用 in-memory DB 跑 typer.testing.CliRunner）
+- [ ] commit：`feat(cli): stats + health commands`
+
+### 三 — 寫入指令：maintain + forget
+- [ ] `mem-broom maintain [--db PATH] [--json]`：跑 `maintenance()`、印新 tier 分布
+- [ ] `mem-broom forget <id>... [--yes] [--db PATH]`：軟刪除，預設要 confirm
+- [ ] confirmation prompt 用 `typer.confirm`，`--yes` 直接跳過
+- [ ] 測試：confirm decline 不會刪、`--yes` 真的刪
+- [ ] commit：`feat(cli): maintain + forget commands`
+
+### 四 — search + add
+- [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
+- [ ] `mem-broom add <text> [--tag T]... [--db PATH]`
+- [ ] `add` 支援 stdin pipe：沒給 `<text>` 就讀 stdin（`cat foo.md | mem-broom add`）
+- [ ] 測試：pipe 行為 + tag 解析
+- [ ] commit：`feat(cli): search + add commands`
+
+### 五 — Polish：輸出格式 + 錯誤處理
+- [ ] 統一 JSON envelope：`{"ok": bool, "data": ..., "error": null}`
+- [ ] DB 路徑不存在 / namespace 空時的友善錯誤訊息
+- [ ] `--version` flag、全域 `--namespace` flag
+- [ ] commit：`feat(cli): json envelope + error messages`
+
+### 六 — 範例 + 文件
+- [ ] `examples/04_cli_walkthrough.md`：從 add → search → health → forget 一條流程
+- [ ] README 加 mem-broom 段落（雙語）
+- [ ] mem-broom 自己的 `packages/mem-broom/README.md`
+- [ ] commit：`docs: mem-broom cli walkthrough + readme`
+
+### 日 — Buffer / push
+- [ ] 從乾淨 clone 跑 smoke：`uv sync && pytest && mem-broom --help`
+- [ ] 全部 push
+- [ ] commit：`chore: week 3 close`
 
 ## Week 4：Launch + write-up
 *(Week 3 結束時詳細規劃)*

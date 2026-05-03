@@ -101,7 +101,57 @@ Decisions locked end of Week 1:
 - [x] Commit: `chore: week 2 close`
 
 ## Week 3: mem-broom CLI
-*(detailed plan written end of Week 2)*
+
+Decisions confirmed end of Week 2:
+- CLI framework: **typer** (same author as FastAPI; type-hint driven `--help`, pairs nicely with `rich` for tables)
+- Output: **human-readable default + `--json` flag** (for pipes / scripts)
+- `restore` subcommand: **skipped**, deferred to Week 4 / v0.2 (schema has `forgotten_at`, but a backend API still needs to be added)
+
+### Mon — Scaffold
+- [ ] Create standalone subpackage at `packages/mem-broom/` (sibling to forget-rag)
+- [ ] `pyproject.toml`: depend on `forget-rag` (workspace), `typer>=0.12`, `rich>=13`
+- [ ] Entry point: `mem-broom = mem_broom.cli:app`
+- [ ] Typer skeleton in `mem_broom/cli.py` (empty app + version flag)
+- [ ] Smoke test: `mem-broom --help` runs
+- [ ] Commit: `feat(cli): mem-broom scaffolding`
+
+### Tue — Read-only commands: stats + health
+- [ ] `mem-broom stats [--db PATH] [--json]`: chunk count, tier distribution, hottest/coldest
+- [ ] `mem-broom health [--db PATH] [--json]`: run `health_check()`, list forget suggestions
+- [ ] `--json` writes to stdout; human-readable uses `rich.Table`
+- [ ] Unit tests via `typer.testing.CliRunner` against an in-memory DB
+- [ ] Commit: `feat(cli): stats + health commands`
+
+### Wed — Write commands: maintain + forget
+- [ ] `mem-broom maintain [--db PATH] [--json]`: run `maintenance()`, print new tier distribution
+- [ ] `mem-broom forget <id>... [--yes] [--db PATH]`: soft-delete; confirm by default
+- [ ] Confirmation via `typer.confirm`; `--yes` skips
+- [ ] Tests: declined confirm doesn't delete; `--yes` actually deletes
+- [ ] Commit: `feat(cli): maintain + forget commands`
+
+### Thu — search + add
+- [ ] `mem-broom search <query> [--limit N] [--db PATH] [--json]`
+- [ ] `mem-broom add <text> [--tag T]... [--db PATH]`
+- [ ] `add` supports stdin pipe: missing `<text>` reads stdin (`cat foo.md | mem-broom add`)
+- [ ] Tests: pipe behaviour + tag parsing
+- [ ] Commit: `feat(cli): search + add commands`
+
+### Fri — Polish: output format + error handling
+- [ ] Unified JSON envelope: `{"ok": bool, "data": ..., "error": null}`
+- [ ] Friendly errors when DB path is missing / namespace is empty
+- [ ] Global `--version` and `--namespace` flags
+- [ ] Commit: `feat(cli): json envelope + error messages`
+
+### Sat — Examples + docs
+- [ ] `examples/04_cli_walkthrough.md`: end-to-end add → search → health → forget
+- [ ] README mem-broom section (bilingual)
+- [ ] mem-broom's own `packages/mem-broom/README.md`
+- [ ] Commit: `docs: mem-broom cli walkthrough + readme`
+
+### Sun — Buffer / push
+- [ ] Smoke from clean clone: `uv sync && pytest && mem-broom --help`
+- [ ] Push everything
+- [ ] Commit: `chore: week 3 close`
 
 ## Week 4: Launch + write-up
 *(detailed plan written end of Week 3)*
