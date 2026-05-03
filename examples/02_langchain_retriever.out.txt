@@ -1,0 +1,4 @@
+=== Query: 'retriever' ===
+  [L1] heat=1.000  LangChain 0.3 retriever interface uses invoke() not get_relevant_documents().
+  [L1] heat=0.000  LangChain 0.2 retriever uses _get_relevant_documents.
+  [L1] heat=0.000  LangChain 0.1 retriever was very different.

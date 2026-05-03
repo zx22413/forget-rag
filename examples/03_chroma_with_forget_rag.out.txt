@@ -1,0 +1,16 @@
+=== forget-rag suggestions (pre-search) ===
+  - 'Old Heroku deployment notes — service shut down.'  (heat 0.0000 below floor 0.05)
+  - 'AWS Lambda deployment guide for Python (2022 edition).'  (heat 0.0000 below floor 0.05)
+
+=== Hybrid search: 'AWS Lambda Python deploy' ===
+
+  vec=0.800  heat=1.000  combined=1.800
+    How to deploy a Python app to AWS Lambda.
+  vec=0.750  heat=0.500  combined=1.250
+    AWS Lambda deployment guide for Python (2025 edition).
+  vec=0.750  heat=0.000  combined=0.750
+    AWS Lambda deployment guide for Python (2022 edition).
+  vec=0.000  heat=0.250  combined=0.250
+    Kubernetes pods and services overview.
+  vec=0.000  heat=0.000  combined=0.000
+    Old Heroku deployment notes — service shut down.

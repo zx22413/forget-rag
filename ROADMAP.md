@@ -90,10 +90,10 @@ Decisions locked end of Week 1:
 - [x] Commit: `docs(bench): write-up + readme link`
 
 ### Sat — LangChain + Chroma examples
-- [ ] `examples/02_langchain_retriever.py` — minimal retriever in a chain
-- [ ] `examples/03_chroma_with_forget_rag.py` — Chroma does vector recall, forget-rag re-ranks with heat
-- [ ] Bilingual docstrings + captured `.out.txt` transcripts
-- [ ] Commit: `docs: langchain + chroma examples`
+- [x] `examples/02_langchain_retriever.py` — minimal retriever in a chain
+- [x] `examples/03_chroma_with_forget_rag.py` — Chroma does vector recall, forget-rag re-ranks with heat
+- [x] Bilingual docstrings + captured `.out.txt` transcripts
+- [x] Commit: `docs: langchain + chroma examples`
 
 ### Sun — Buffer / push
 - [ ] Smoke from clean clone (`uv sync && pytest && examples`)

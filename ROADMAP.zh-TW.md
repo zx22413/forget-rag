@@ -90,10 +90,10 @@ Week 1 末確認的決策：
 - [x] commit：`docs(bench): write-up + readme link`
 
 ### 六 — LangChain + Chroma 範例
-- [ ] `examples/02_langchain_retriever.py`：最小的 retriever 接到 chain
-- [ ] `examples/03_chroma_with_forget_rag.py`：Chroma 負責向量召回，forget-rag 用 heat 重排
-- [ ] 雙語 docstring + `.out.txt` transcript 留檔
-- [ ] commit：`docs: langchain + chroma examples`
+- [x] `examples/02_langchain_retriever.py`：最小的 retriever 接到 chain
+- [x] `examples/03_chroma_with_forget_rag.py`：Chroma 負責向量召回，forget-rag 用 heat 重排
+- [x] 雙語 docstring + `.out.txt` transcript 留檔
+- [x] commit：`docs: langchain + chroma examples`
 
 ### 日 — Buffer / push
 - [ ] 從乾淨 clone 跑 smoke（`uv sync && pytest && examples`）
