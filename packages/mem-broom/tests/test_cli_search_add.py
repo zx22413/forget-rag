@@ -24,7 +24,10 @@ runner = CliRunner()
 
 @pytest.fixture
 def db_path(tmp_path: Path) -> Path:
-    return tmp_path / "test.db"
+    """A pre-created SQLite DB inside tmp_path."""
+    path = tmp_path / "test.db"
+    ForgettingMemory(sqlite_path=path).close()
+    return path
 
 
 # --- add -----------------------------------------------------------------

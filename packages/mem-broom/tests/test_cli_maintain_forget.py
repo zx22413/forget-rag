@@ -43,6 +43,7 @@ def populated_db(tmp_path: Path) -> tuple[Path, list[str]]:
 
 def test_maintain_human_empty_db(tmp_path: Path) -> None:
     db = tmp_path / "empty.db"
+    ForgettingMemory(sqlite_path=db).close()
     result = runner.invoke(app, ["maintain", "--db", str(db)])
     assert result.exit_code == 0, result.stdout
     assert "maintenance run" in result.stdout.lower()

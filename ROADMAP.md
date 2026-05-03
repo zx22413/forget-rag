@@ -137,10 +137,10 @@ Decisions confirmed end of Week 2:
 - [x] Commit: `feat(cli): search + add commands`
 
 ### Fri — Polish: output format + error handling
-- [ ] Unified JSON envelope: `{"ok": bool, "data": ..., "error": null}`
-- [ ] Friendly errors when DB path is missing / namespace is empty
-- [ ] Global `--version` and `--namespace` flags
-- [ ] Commit: `feat(cli): json envelope + error messages`
+- [x] Unified JSON envelope: `{"ok": bool, "data": ..., "error": null}`
+- [x] Friendly errors when DB path is missing / namespace is empty
+- [x] Global `--version` and `--namespace` flags
+- [x] Commit: `feat(cli): json envelope + error messages`
 
 ### Sat — Examples + docs
 - [ ] `examples/04_cli_walkthrough.md`: end-to-end add → search → health → forget

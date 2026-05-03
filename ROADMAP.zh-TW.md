@@ -137,10 +137,10 @@ Week 2 末確認的決策：
 - [x] commit：`feat(cli): search + add commands`
 
 ### 五 — Polish：輸出格式 + 錯誤處理
-- [ ] 統一 JSON envelope：`{"ok": bool, "data": ..., "error": null}`
-- [ ] DB 路徑不存在 / namespace 空時的友善錯誤訊息
-- [ ] `--version` flag、全域 `--namespace` flag
-- [ ] commit：`feat(cli): json envelope + error messages`
+- [x] 統一 JSON envelope：`{"ok": bool, "data": ..., "error": null}`
+- [x] DB 路徑不存在 / namespace 空時的友善錯誤訊息
+- [x] `--version` flag、全域 `--namespace` flag
+- [x] commit：`feat(cli): json envelope + error messages`
 
 ### 六 — 範例 + 文件
 - [ ] `examples/04_cli_walkthrough.md`：從 add → search → health → forget 一條流程

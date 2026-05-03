@@ -22,8 +22,10 @@ NOW = datetime(2026, 5, 3, 12, 0, 0, tzinfo=UTC)
 
 @pytest.fixture
 def db_path(tmp_path: Path) -> Path:
-    """A fresh empty SQLite DB path inside tmp_path."""
-    return tmp_path / "test.db"
+    """A fresh empty SQLite DB inside tmp_path (file pre-created)."""
+    path = tmp_path / "test.db"
+    ForgettingMemory(sqlite_path=path).close()
+    return path
 
 
 @pytest.fixture

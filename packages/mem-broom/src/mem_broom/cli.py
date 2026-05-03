@@ -10,7 +10,13 @@ from forget_rag import ForgettingMemory
 from rich.table import Table
 
 from mem_broom import __version__
-from mem_broom._io import console, emit_json, truncate
+from mem_broom._io import (
+    console,
+    emit_json,
+    ensure_db_exists,
+    ensure_namespace,
+    truncate,
+)
 
 app = typer.Typer(
     name="mem-broom",
@@ -74,6 +80,8 @@ def stats(
     json_out: bool = JsonOption,
 ) -> None:
     """Show chunk count, tier distribution, and hottest / coldest chunks."""
+    ensure_namespace(namespace, json_out=json_out)
+    ensure_db_exists(db, json_out=json_out)
     with ForgettingMemory(
         sqlite_path=db,
         namespace=namespace,
@@ -159,6 +167,8 @@ def health(
     json_out: bool = JsonOption,
 ) -> None:
     """Run health_check() — list suggested forgets and stale chunks."""
+    ensure_namespace(namespace, json_out=json_out)
+    ensure_db_exists(db, json_out=json_out)
     with ForgettingMemory(
         sqlite_path=db,
         namespace=namespace,
@@ -236,6 +246,8 @@ def maintain(
     json_out: bool = JsonOption,
 ) -> None:
     """Run maintenance(): recompute heat and reshuffle tier assignments."""
+    ensure_namespace(namespace, json_out=json_out)
+    ensure_db_exists(db, json_out=json_out)
     with ForgettingMemory(
         sqlite_path=db,
         namespace=namespace,
@@ -293,6 +305,8 @@ def forget(
     json_out: bool = JsonOption,
 ) -> None:
     """Soft-delete chunks by id. Prompts for confirmation unless --yes."""
+    ensure_namespace(namespace, json_out=json_out)
+    ensure_db_exists(db, json_out=json_out)
     if not chunk_ids:
         raise typer.BadParameter("at least one ID is required")
 
@@ -362,6 +376,8 @@ def search(
     json_out: bool = JsonOption,
 ) -> None:
     """Run BM25 + heat search and print the top results."""
+    ensure_namespace(namespace, json_out=json_out)
+    ensure_db_exists(db, json_out=json_out)
     with ForgettingMemory(
         sqlite_path=db,
         namespace=namespace,
@@ -443,6 +459,7 @@ def add(
     json_out: bool = JsonOption,
 ) -> None:
     """Insert a new chunk. Pipe content via stdin if no TEXT is given."""
+    ensure_namespace(namespace, json_out=json_out)
     if text is None:
         text = sys.stdin.read()
     text = text.strip()
