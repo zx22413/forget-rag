@@ -1,0 +1,75 @@
+[English](ROADMAP.md) | [繁體中文](ROADMAP.zh-TW.md)
+
+# Roadmap & Week 1 Plan
+
+## Week 1: Core lib bootstrap (Mon–Sun)
+
+### Mon — Project skeleton
+- [x] Create empty `forget-rag` repo on GitHub (PUBLIC, MIT, no Brain content)
+- [x] Set up monorepo layout (per SPEC.md)
+- [ ] `pyproject.toml` with `uv` workspace, Python 3.11+
+- [ ] CI: GitHub Actions running pytest on push (5-min job)
+- [x] First commit: `chore: initial scaffold`
+
+### Tue — SQLite backend + heat score
+- [ ] Implement `chunks` schema + FTS5 virtual table
+- [ ] `heat.py`: decay function with `decay_halflife_days` param
+- [ ] Unit tests for heat decay (3 cases: fresh / aged / boosted)
+- [ ] Commit: `feat: sqlite backend + heat decay`
+
+### Wed — Add / search / forget
+- [ ] `ForgettingMemory.add()` — insert + FTS index
+- [ ] `ForgettingMemory.search()` — BM25 + heat boost (skip vector wave 1)
+- [ ] `ForgettingMemory.forget()` — soft delete
+- [ ] Tests for round-trip
+- [ ] Commit: `feat: add/search/forget primitives`
+
+### Thu — Tier transitions
+- [ ] `tiers.py`: L1→L2→L3 logic with thresholds
+- [ ] `health_check()` returns suggestions
+- [ ] Tests with fast-forwarded clock
+- [ ] Commit: `feat: tiered storage`
+
+### Fri — Vector layer (optional)
+- [ ] Add bge-m3 embedding via `sentence-transformers` or `ollama`
+- [ ] RRF combine BM25 + vector
+- [ ] If too much, push to weekend
+- [ ] Commit: `feat: hybrid search with vector`
+
+### Sat — Examples + dogfood
+- [ ] `examples/01_basic_usage.py` — runnable in 30 seconds
+- [ ] Run it on a fake corpus (Wikipedia 100 articles)
+- [ ] Take screenshots of CLI output for README
+- [ ] Commit: `docs: examples`
+
+### Sun — Public-ready README
+- [x] README v0 (already done as part of bootstrap)
+- [ ] Add architecture diagram (Excalidraw, export PNG)
+- [ ] Push everything; **don't launch yet** (Week 2 target)
+- [ ] Commit: `docs: v0 README + diagram`
+
+## Week 2: LangChain adapter + benchmark
+*(detailed plan written end of Week 1)*
+
+## Week 3: mem-broom CLI
+*(detailed plan written end of Week 2)*
+
+## Week 4: Launch + write-up
+*(detailed plan written end of Week 3)*
+
+---
+
+## Time budget
+
+- forget-rag: ≤ 10 hours / week
+- Brain maintenance: continue normally, don't sacrifice
+- If a day blows up, slip the day, don't compress quality
+
+## Discipline rules
+
+1. **One commit per checkbox**, with conventional commit message
+2. **Tests pass before commit** (CI catches it anyway)
+3. **No real Brain data** in any test/example/screenshot
+4. **README must work** — anyone cloning it should
+   `pip install -e packages/forget-rag && python examples/01_basic_usage.py`
+   and see output

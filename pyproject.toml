@@ -1,0 +1,30 @@
+# Workspace root for forget-rag monorepo.
+# Run `uv sync` from this directory to install all packages in editable mode.
+
+[project]
+name = "forget-rag-workspace"
+version = "0.1.0"
+description = "Workspace root — see packages/forget-rag for the actual library."
+requires-python = ">=3.11"
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages/forget-rag/tests", "packages/mem-broom/tests"]
+addopts = "-q --strict-markers"
