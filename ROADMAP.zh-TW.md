@@ -150,7 +150,7 @@ Week 2 末確認的決策：
 
 ### 日 — Buffer / push
 - [x] 從乾淨 clone 跑 smoke：`uv sync && pytest && mem-broom --help`
-- [ ] 全部 push
+- [x] 全部 push
 - [x] commit：`chore: week 3 close`
 
 ## Week 4：Launch + write-up

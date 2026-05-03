@@ -150,7 +150,7 @@ Decisions confirmed end of Week 2:
 
 ### Sun — Buffer / push
 - [x] Smoke from clean clone: `uv sync && pytest && mem-broom --help`
-- [ ] Push everything
+- [x] Push everything
 - [x] Commit: `chore: week 3 close`
 
 ## Week 4: Launch + write-up
