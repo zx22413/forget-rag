@@ -221,9 +221,9 @@ pip install forget-rag
 # with the LangChain adapter
 pip install "forget-rag[langchain]"
 
-# the companion CLI (distribution name is forget-rag-broom; the
-# CLI command it installs is `mem-broom`)
-pip install forget-rag-broom
+# the companion CLI (mem-broom). v0.1 is git-installed; PyPI follows
+# once an upstream PyPI form bug is resolved.
+pip install "mem-broom @ git+https://github.com/zx22413/forget-rag.git@v0.1.0#subdirectory=packages/mem-broom"
 ```
 
 Five-line example:

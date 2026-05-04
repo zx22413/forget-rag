@@ -1,10 +1,10 @@
 [project]
-# PyPI distribution name. The CLI command stays `mem-broom` (see [project.scripts]
-# below). Renamed from `mem-broom` because PyPI's typosquat detection flagged it
-# as too similar to the existing `broom` package and rejected with a 500 error.
-name = "forget-rag-broom"
+# Not published to PyPI for v0.1 — see notes below. Installed via git URL
+# until the PyPI Pending Publisher form bug (500 on adding a second pending
+# publisher to a single account) is resolved or worked around.
+name = "mem-broom"
 version = "0.1.0"
-description = "CLI broom for forget-rag — sweep stale chunks out of your RAG memory. Installs the `mem-broom` command."
+description = "CLI broom for forget-rag — sweep stale chunks out of your RAG memory."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "LBDog" }]

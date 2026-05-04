@@ -9,18 +9,20 @@ stale chunks out of your RAG memory from the command line.
 ## Install
 
 ```bash
-# From PyPI (CLI command is `mem-broom`, distribution name is forget-rag-broom):
-pip install forget-rag-broom
+# v0.1: install from git (PyPI publish deferred — see note below).
+pip install "mem-broom @ git+https://github.com/zx22413/forget-rag.git@v0.1.0#subdirectory=packages/mem-broom"
 
-# From the workspace root (development):
-uv sync                              # installs forget-rag + forget-rag-broom
-
-# Standalone editable install:
+# Or, from a checkout of the workspace:
+uv sync                              # installs forget-rag + mem-broom
+# or, standalone editable install:
 pip install -e packages/mem-broom
 ```
 
-> The PyPI distribution is named `forget-rag-broom` because PyPI's typosquat
-> detector rejected `mem-broom`. The CLI command stays `mem-broom`.
+> **Why git install in v0.1?** The PyPI Pending Trusted Publisher form
+> currently returns a 500 error when adding a second pending publisher
+> under one account (the issue is independent of the package name). The
+> primary `forget-rag` package is on PyPI; `mem-broom` will follow once
+> the upstream bug is resolved. Tracking link in the repo's SECURITY.md.
 
 ## Subcommands
 

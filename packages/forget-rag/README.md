@@ -44,9 +44,10 @@ report = memory.health_check()              # what should be forgotten?
 
 ## Companion CLI
 
-The [`forget-rag-broom`](https://pypi.org/project/forget-rag-broom/) package
-wraps this library with a typer-based CLI (`mem-broom`) for ad-hoc memory
-hygiene.
+The [`mem-broom`](https://github.com/zx22413/forget-rag/tree/main/packages/mem-broom)
+companion package wraps this library with a typer-based CLI for ad-hoc
+memory hygiene. v0.1 ships it as a git install (the PyPI publish is
+deferred — see the project README for the install command).
 
 ## Links
 

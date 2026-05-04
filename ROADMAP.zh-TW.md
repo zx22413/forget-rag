@@ -156,7 +156,7 @@ Week 2 末確認的決策：
 ## Week 4：Launch + write-up
 
 Week 3 末確認的決策：
-- **PyPI**：上（佔 `forget-rag` + `forget-rag-broom` 名字，推 v0.1.0 wheel）。PyPI typosquat 偵測擋了 `mem-broom`（跟既有 `broom` 太像）；CLI 指令仍是 `mem-broom`，只有 distribution 名字改
+- **PyPI**：v0.1 只發 `forget-rag`。`mem-broom` PyPI 推遲——PyPI 的 Pending Trusted Publisher 表單第二筆必 500（換過 `mem-broom`、`forget-rag-broom`、隨機測試名都同錯誤，bug 在表單不在名字）。v0.1 `mem-broom` 走 git install，等上游修好再上 PyPI
 - **Launch channel**：Medium 文章（軟發布，v0.1 不發 HN / Reddit）
 - **Demo 素材**：asciinema 錄影 + 3–4 張靜態截圖
 - 向量層維持推遲到 v0.2
@@ -193,8 +193,9 @@ Week 3 末確認的決策：
 ### 五 — Release v0.1.0
 - [ ] `CHANGELOG.md`：scaffold → v0.1.0 全部變更
 - [ ] `git tag v0.1.0` + GitHub Release notes（從 CHANGELOG 拉）
-- [ ] 透過 GitHub Actions publish：`forget-rag==0.1.0`、`forget-rag-broom==0.1.0`
-- [ ] 乾淨環境 smoke：`pip install forget-rag forget-rag-broom` 然後跑 `examples/01_basic_usage.py`
+- [ ] 透過 GitHub Actions publish：`forget-rag==0.1.0`（mem-broom 推遲）
+- [ ] 乾淨環境 smoke：`pip install forget-rag` + git install `mem-broom` 然後跑 `examples/01_basic_usage.py`
+- [ ] `mem-broom` wheel + sdist 掛在 GitHub Release 當 artifact
 - [ ] commit：`chore: release v0.1.0`（推 tag）
 
 ### 六 — Launch
