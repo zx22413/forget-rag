@@ -156,7 +156,7 @@ Week 2 末確認的決策：
 ## Week 4：Launch + write-up
 
 Week 3 末確認的決策：
-- **PyPI**：v0.1 只發 `forget-rag`。`mem-broom` PyPI 推遲——PyPI 的 Pending Trusted Publisher 表單第二筆必 500（換過 `mem-broom`、`forget-rag-broom`、隨機測試名都同錯誤，bug 在表單不在名字）。v0.1 `mem-broom` 走 git install，等上游修好再上 PyPI
+- **PyPI**：v0.1 只發 `forget-rag`。`mem-broom` PyPI 推遲——PyPI 的 Pending Trusted Publisher 表單第二筆必 500（換過 `mem-broom`、`forget-rag-broom`、隨機測試名都同錯誤，bug 在表單不在名字）。v0.1 `mem-broom` 走 git install，等上游修好再上 PyPI。Upstream tracking：[pypi/warehouse#20006](https://github.com/pypi/warehouse/issues/20006)
 - **Launch channel**：Medium 文章（軟發布，v0.1 不發 HN / Reddit）
 - **Demo 素材**：asciinema 錄影 + 3–4 張靜態截圖
 - 向量層維持推遲到 v0.2

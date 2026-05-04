@@ -7,8 +7,8 @@ name: publish
 # only for v0.1 because PyPI's Pending Trusted Publisher form returns
 # 500 when adding a second pending publisher under the same account
 # (reproduced across multiple project names: mem-broom, forget-rag-broom,
-# and an unrelated test name). Tracking issue: see SECURITY.md for the
-# follow-up filed at github.com/pypi/support.
+# and an unrelated test name). Upstream tracking:
+#   https://github.com/pypi/warehouse/issues/20006
 #
 # Once that bug is resolved, restore the `publish-mem-broom` job and
 # add a second `Pending Publisher` entry on PyPI:

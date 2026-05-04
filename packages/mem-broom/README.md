@@ -22,7 +22,8 @@ pip install -e packages/mem-broom
 > currently returns a 500 error when adding a second pending publisher
 > under one account (the issue is independent of the package name). The
 > primary `forget-rag` package is on PyPI; `mem-broom` will follow once
-> the upstream bug is resolved. Tracking link in the repo's SECURITY.md.
+> the upstream bug is resolved. Tracking:
+> [pypi/warehouse#20006](https://github.com/pypi/warehouse/issues/20006).
 
 ## Subcommands
 

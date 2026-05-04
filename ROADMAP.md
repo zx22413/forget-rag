@@ -156,7 +156,7 @@ Decisions confirmed end of Week 2:
 ## Week 4: Launch + write-up
 
 Decisions confirmed end of Week 3:
-- **PyPI**: publish `forget-rag` only for v0.1. The `mem-broom` PyPI publish is deferred because PyPI's Pending Trusted Publisher form 500's when adding a second pending publisher (reproduced across `mem-broom`, `forget-rag-broom`, and a random unrelated test name — the issue is in the form, not the project name). v0.1 ships `mem-broom` as a git install; PyPI follows after upstream support resolves the bug.
+- **PyPI**: publish `forget-rag` only for v0.1. The `mem-broom` PyPI publish is deferred because PyPI's Pending Trusted Publisher form 500's when adding a second pending publisher (reproduced across `mem-broom`, `forget-rag-broom`, and a random unrelated test name — the issue is in the form, not the project name). v0.1 ships `mem-broom` as a git install; PyPI follows after upstream support resolves the bug. Upstream tracking: [pypi/warehouse#20006](https://github.com/pypi/warehouse/issues/20006).
 - **Launch channel**: Medium article (soft launch — no HN / Reddit for v0.1)
 - **Demo material**: asciinema cast + 3–4 static screenshots
 - Vector layer still deferred to v0.2
