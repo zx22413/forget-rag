@@ -10,7 +10,7 @@ first for anything bigger than a typo or a one-line fix.
 forget-rag/
 ├── packages/
 │   ├── forget-rag/        # the library (published as `forget-rag` on PyPI)
-│   └── mem-broom/         # CLI broom (published as `mem-broom` on PyPI)
+│   └── mem-broom/         # CLI broom (published as `forget-rag-broom` on PyPI; CLI command is `mem-broom`)
 ├── docs/                  # benchmark, architecture, blog drafts
 ├── examples/              # runnable examples
 └── ROADMAP.md             # week-by-week plan; the source of truth for scope

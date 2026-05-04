@@ -156,7 +156,7 @@ Decisions confirmed end of Week 2:
 ## Week 4: Launch + write-up
 
 Decisions confirmed end of Week 3:
-- **PyPI**: publish (claim `forget-rag` + `mem-broom` names, ship v0.1.0 wheels)
+- **PyPI**: publish (claim `forget-rag` + `forget-rag-broom` names, ship v0.1.0 wheels). PyPI typosquat detector rejected `mem-broom` (too close to existing `broom`); CLI command stays `mem-broom`, only the distribution name changed.
 - **Launch channel**: Medium article (soft launch — no HN / Reddit for v0.1)
 - **Demo material**: asciinema cast + 3–4 static screenshots
 - Vector layer still deferred to v0.2
@@ -193,8 +193,8 @@ Decisions confirmed end of Week 3:
 ### Fri — Release v0.1.0
 - [ ] `CHANGELOG.md`: every change from scaffold → v0.1.0
 - [ ] `git tag v0.1.0` + GitHub Release notes (pulled from CHANGELOG)
-- [ ] PyPI publish via GitHub Actions: `forget-rag==0.1.0`, `mem-broom==0.1.0`
-- [ ] Clean-env smoke: `pip install forget-rag mem-broom` then run `examples/01_basic_usage.py`
+- [ ] PyPI publish via GitHub Actions: `forget-rag==0.1.0`, `forget-rag-broom==0.1.0`
+- [ ] Clean-env smoke: `pip install forget-rag forget-rag-broom` then run `examples/01_basic_usage.py`
 - [ ] Commit: `chore: release v0.1.0` (and push tag)
 
 ### Sat — Launch

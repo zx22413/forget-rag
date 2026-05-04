@@ -5,9 +5,13 @@ name: publish
 # registered on PyPI pointing at this workflow file.
 #
 # Setup once on PyPI (https://pypi.org/manage/account/publishing/):
-#   - Project: forget-rag    | owner: zx22413 | repo: forget-rag
-#     workflow: publish.yml  | environment: pypi
-#   - Project: mem-broom     | (same as above)
+#   - Project: forget-rag        | owner: zx22413 | repo: forget-rag
+#     workflow: publish.yml      | environment: pypi
+#   - Project: forget-rag-broom  | (same as above)
+#
+# The CLI installed by `forget-rag-broom` is `mem-broom` — the package was
+# renamed only on the PyPI distribution side because PyPI's typosquat detector
+# rejected `mem-broom` (it's too close to the existing `broom` package).
 #
 # Tag + release flow:
 #   git tag v0.1.0
@@ -71,12 +75,12 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
 
   publish-mem-broom:
-    name: Publish mem-broom to PyPI
+    name: Publish forget-rag-broom to PyPI
     needs: [build, publish-forget-rag]
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/mem-broom
+      url: https://pypi.org/p/forget-rag-broom
     permissions:
       id-token: write
     steps:

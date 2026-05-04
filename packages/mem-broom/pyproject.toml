@@ -1,7 +1,10 @@
 [project]
-name = "mem-broom"
+# PyPI distribution name. The CLI command stays `mem-broom` (see [project.scripts]
+# below). Renamed from `mem-broom` because PyPI's typosquat detection flagged it
+# as too similar to the existing `broom` package and rejected with a 500 error.
+name = "forget-rag-broom"
 version = "0.1.0"
-description = "CLI broom for forget-rag — sweep stale chunks out of your RAG memory."
+description = "CLI broom for forget-rag — sweep stale chunks out of your RAG memory. Installs the `mem-broom` command."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "LBDog" }]

@@ -221,8 +221,9 @@ pip install forget-rag
 # with the LangChain adapter
 pip install "forget-rag[langchain]"
 
-# the companion CLI for ad-hoc memory hygiene
-pip install mem-broom
+# the companion CLI (distribution name is forget-rag-broom; the
+# CLI command it installs is `mem-broom`)
+pip install forget-rag-broom
 ```
 
 Five-line example:

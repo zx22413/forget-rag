@@ -9,11 +9,18 @@ stale chunks out of your RAG memory from the command line.
 ## Install
 
 ```bash
-# From the workspace root:
-uv sync                              # installs forget-rag + mem-broom
-# or, standalone:
+# From PyPI (CLI command is `mem-broom`, distribution name is forget-rag-broom):
+pip install forget-rag-broom
+
+# From the workspace root (development):
+uv sync                              # installs forget-rag + forget-rag-broom
+
+# Standalone editable install:
 pip install -e packages/mem-broom
 ```
+
+> The PyPI distribution is named `forget-rag-broom` because PyPI's typosquat
+> detector rejected `mem-broom`. The CLI command stays `mem-broom`.
 
 ## Subcommands
 
